@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_catcher!
   include Pundit
+  def pundit_user
+    current_catcher
+  end
 
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
