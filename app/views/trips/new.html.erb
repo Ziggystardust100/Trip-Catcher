@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>New Trip </h1>
+  <%= simple_form_for @trip do |f| %>
+    <%= f.association :destination, label_method: :location %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.submit class: 'btn btn-primary btn-block' %>
+  <% end %>
+  <hr>
+</div>

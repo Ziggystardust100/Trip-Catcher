@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :catchers
   root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
- resources :destinations, only: [:index,:show]
+  resources :destinations, only: [:index,:show]
+  resources :trips, only: [:show, :new, :create, :destroy ]
+  resources :catchers, only: [:edit, :index, :show, :update]
 end
