@@ -5,7 +5,10 @@ Destination.destroy_all
 Catcher.destroy_all
 
 # Create User
-john_doe = Catcher.create!(email: 'john@doe.com', password: 'qwerty')
+john_doe = Catcher.create!(email: 'john@doe.com', password: 'qwerty', user_name: 'johnny', first_name: 'John',  last_name: 'Doe', gender: 'male', birth_date: '01/02/70')
+Catcher.create!(email: 'john1@doe.com', password: 'qwerty', user_name: 'johnny', first_name: 'John',  last_name: 'Doe', gender: 'male', birth_date: '01/02/70')
+Catcher.create!(email: 'john2@doe.com', password: 'qwerty', user_name: 'johnny', first_name: 'John',  last_name: 'Doe', gender: 'male', birth_date: '01/02/70')
+Catcher.create!(email: 'john3@doe.com', password: 'qwerty', user_name: 'johnny', first_name: 'John',  last_name: 'Doe', gender: 'male', birth_date: '01/02/70')
 # Create Destination
 london = Destination.create!(location: 'london', description: 'cool', price: 90)
 paris = Destination.create!(location: 'paris', description: 'beautiful', price: 85)

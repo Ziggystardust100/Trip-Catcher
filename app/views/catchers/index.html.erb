@@ -1,1 +1,31 @@
+<div class="background"> <%= image_tag "giraffe.jpg", alt: "alttext" %></div>
+
+<div class="container">
+  <div class="row">
+
+<%@catchers.each do |catcher|%>
+<div class="col-sm-6 col-lg-4">
+<div class="card s">
+  <h5 class="card-header"> <%=  catcher.user_name %> </h5>
+  <div class="card-body">
+    <div class=" card-body-wrap">
+      <div>
+          <p class="card-text"><%= catcher.first_name %> <%= catcher.last_name %></p>
+          <p class="card-text"><%= catcher.gender %></p>
+          <p class="card-text"><%= catcher.birth_date %></p>
+          <p class="card-text"><%= catcher.occupation %></p>
+          <p class="card-text"><%= catcher.hobbies %></p>
+          <p class="card-text"><%= catcher.past_destinations %></p>
+      <%= link_to " check it", catcher_path(catcher), class: "btn btn-warning"%>
+      </div>
+      <div><%= image_tag "sheep.jpg", alt: "alttext" , class:'b'%></div>
+
+      </div>
+
+  </div>
+</div>
+</div>
+<%end%>
+  </div>
+</div>
 
