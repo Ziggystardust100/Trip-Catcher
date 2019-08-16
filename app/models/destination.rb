@@ -3,7 +3,7 @@ class Destination < ApplicationRecord
   has_many :favourites, dependent: :destroy
   has_many :invitations, through: :trips
   has_many :stories
-  has_many :pictures
+  has_many :pictures, dependent: :destroy
   validates :location, presence: true
   validates :description, presence: true
   validates :price, presence: true

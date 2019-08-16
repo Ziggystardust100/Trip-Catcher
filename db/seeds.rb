@@ -15,3 +15,9 @@ favourites = Favourite.create!(catcher_id: john_doe.id, destination_id:london.id
 trips = Trip.create!(destination_id: london.id, start_date: Date.today, end_date: (Date.today + 5))
 # Create Invitations
 invitations = Invitation.create!(catcher_id: john_doe.id, trip_id: trips.id, joined: true)
+
+
+url = "https://i.pinimg.com/564x/79/71/57/797157200af372aabff10a4e0a62447c.jpg"
+pic = Picture.new(destination_id: london.id)
+pic.remote_photo_url = url
+pic.save

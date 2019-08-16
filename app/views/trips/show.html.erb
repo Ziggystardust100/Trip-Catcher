@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card-trip show">
-    <img src="<%= %>" alt="picture"/>
+    <%= cl_image_tag @trip.destination.pictures.first.photo, height: 300, width: 400, crop: :fill %>
     <!-- how to get the picture from pictures table? -->
     <h3 class="card-trip-infos"><%= @trip.destination.location %></h3>
       <div class="row list-group-item d-flex justify-content-between ">
