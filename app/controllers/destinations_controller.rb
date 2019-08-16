@@ -1,6 +1,19 @@
 class DestinationsController < ApplicationController
 def index
-  @destinations = policy_scope(Destination)
+  @destinations = policy_scope(Destination).geocoded
+
+
+   @markers = @destinations.map do |destination|
+    {
+      lat: destination.latitude,
+      lng: destination.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { destination: destination }),
+      image_url: helpers.asset_url('logo-dark.svg')
+    }
+
+
+
+  end
 
 end
 

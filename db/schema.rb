@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2019_08_16_124725) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "favourites", force: :cascade do |t|
