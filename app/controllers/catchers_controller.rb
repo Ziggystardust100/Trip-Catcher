@@ -1,4 +1,5 @@
 class CatchersController < ApplicationController
+
   def edit
     @catcher = Catcher.find(params[:id])
     authorize @catcher
