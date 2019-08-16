@@ -1,2 +1,40 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: url('<%= image_path("journey.jpg") %>');">
+    <div class="container">
+      <h1>Catch your fullfilling journey</h1>
+      <p>And find your travelling budy through a perfect match!</p>
+      <a class="btn-warning" href="">Find your destination</a>
+    </div>
+  </div>
+
+<div class="cards">
+    <h2>Destinations</h2>
+  <div class="row">
+    <% @destinations.each do |d| %>
+      <div class="col-4 mb-3">
+        <%= link_to destinations_path(d) do %>
+          <div class="card-trip">
+            <% unless d.pictures.blank?  %>
+           <%= cl_image_tag d.pictures.first.photo, height: 300, width: 400, crop: :fill %>
+           <% end %>
+            <div class="card-trip-infos">
+              <h2><%= d.location %></h2>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<div class="footer">
+  <div class="links">
+    <ul>
+      <li><a href="#" > <i class="fab fa-facebook-square"></i> </a></li>
+      <li><a href="#"> <i class="fab fa-github"></i> </a></li>
+      <li><a href="#"> <i class="fab fa-instagram"></i> </a></li>
+    </ul>
+  </div>
+  <h5>Trip Catcher was coded with ❤️ from Buzzkito Casablanca</h5>
+</div>
