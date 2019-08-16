@@ -1,5 +1,39 @@
-<h1>index</h1>
-<% @destinations.each do |d| %>
-<%= d.location %></h5>
-<% end %>
+<div>
+
+
+<div
+  id="map"
+  style="width: 100%;
+  height: 300px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
+
+
+
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @destinations.each do |d| %>
+      <div class= "col-12 col-md-6 col-lg-4  py-4">
+
+         <div class="card-trip">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= d.location %></h2>
+        <p>Short description here!</p>
+      </div>
+      <%= link_to "Show Details",  destination_path(d), class: "btn btn-light"%>
+    </div>
+  </div>
+
+
+      </div>
+    <% end %>
+  </div>
+</div>
+
 
