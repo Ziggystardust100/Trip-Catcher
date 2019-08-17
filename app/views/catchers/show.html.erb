@@ -1,0 +1,27 @@
+<div class="container profile-card">
+    <% if current_catcher == @catcher %>
+    <% end %>
+    <div class="row">
+        <div class="col-md-5">
+          <div class="profile-center">
+            <%= image_tag "sheep", alt: "alttext", class: 'profile-image'%>
+            </div>
+        </div >
+        <div class="col-md-7   ">
+          <div class="profile-text">
+        <h3 class="card-title "><%= @catcher.user_name %></h3>
+        <p> <%= @catcher.gender %> </p>
+        <h4> <%= @catcher.occupation %> </h4>
+        <h4> <%= @catcher.hobbies %> </h4>
+        <h4>past destinations : </h4> <h4><%= @catcher.past_destinations %></h4>
+        </div>
+      </div>
+        <h5> <%= @catcher.description %> </h5>
+    </div>
+</div>
+
+
+
+<br>
+<%= link_to "Go back", catchers_path, class: "btn btn-warning", id: 'go-back'  %>
+
