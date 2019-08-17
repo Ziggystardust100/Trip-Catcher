@@ -23,11 +23,7 @@ a {
   background-position: center;
   padding: 200px 0;
 }
-.form-control {
-  line-height: 60px;
-  width: 200px;
-  margin-bottom: 2px;
-}
+
 .home h1 {
   color: #EDF2F4;
   font-size: 50px;
@@ -69,4 +65,8 @@ a {
 .footer {
   background-size: cover;
   padding: 10px;
+}
+
+.home-input {
+  width: 90%;
 }

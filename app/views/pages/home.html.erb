@@ -3,18 +3,20 @@
     <h1>Catch your fullfilling journey</h1>
     <p>And find your travelling budy through a perfect match!</p>
       <%= form_tag destinations_path, method: :get do %>
-        <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a destination"
-        %>
-        <%= submit_tag "Go", class: "btn btn-warning" %>
+      <div class="form-row">
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control home-input",
+          placeholder: "Find a destination"
+          %>
+          <%= submit_tag "Go", class: "btn btn-warning" %>
+        </div>
       <% end %>
   </div>
 </div>
 <br>
 
-<div class="cards">
+<div class="container-fluid cards">
     <h2>Destinations</h2>
   <div class="row">
     <% @destinations.first(3).each do |d| %>
@@ -34,7 +36,7 @@
   </div>
 </div>
 
- <div class="cards">
+ <div class="container-fluid cards">
     <h2>Catchers</h2>
   <div class="row">
     <% @catchers.first(3).each do |c| %>
