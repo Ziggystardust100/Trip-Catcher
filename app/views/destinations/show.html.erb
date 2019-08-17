@@ -62,12 +62,14 @@
  <div class="ava">
    <div class="container">
     <h2>Catchers</h2>
-     <% 10.times do %>
-  <img class="avatar-large" alt="avatar-large" src="https://modernfarmer.com/wp-content/uploads/2017/12/Funny-Sheep-Facts.jpg"/>
+     <% Catcher.all.each do |c|%>
+     <%= link_to catcher_path(c) do %>
+  <img class="avatar-large" alt="avatar-large" src="https://modernfarmer.com/wp-content/uploads/2017/12/Funny-Sheep-Facts.jpg"/><% end %>
     <% end %>
  </div>
 
  </div>
+
 
 
 
