@@ -1,23 +1,65 @@
 <div class="banner" style="background-image: url('<%= image_path("journey.jpg") %>');">
-    <div class="container">
-      <h1>Catch your fullfilling journey</h1>
-      <p>And find your travelling budy through a perfect match!</p>
-      <a class="btn-warning" href="">Find your destination</a>
-    </div>
+  <div class="container home">
+    <h1>Catch your fullfilling journey</h1>
+    <p>And find your travelling budy through a perfect match!</p>
+      <%= form_tag destinations_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a destination"
+        %>
+        <%= submit_tag "Go", class: "btn btn-warning" %>
+      <% end %>
   </div>
+</div>
+<br>
+<div class="container-fluid">
+<h2 id="destination">Destinations</h2>
+    <div id="destinationHomeCarousel" class="carousel slide" data-ride="carousel" data-interval="9000">
+        <div class="carousel-inner row w-100 mx-auto" role="listbox">
+          <% @destinations.each_with_index do |d, index| %>
+            <div class="carousel-item col-md-4 <%=  'active' if index == 0 %>">
+              <%= link_to destinations_path(d) do %>
+                <div class="card-trip">
+                  <% unless d.pictures.blank?  %>
+                 <%= cl_image_tag d.pictures.first.photo, height: 300, width: 400, crop: :fill %>
+                 <% end %>
+                  <div class="card-trip-infos">
+                    <h2><%= d.location %></h2>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+
+        </div>
+        <a class="carousel-control-prev" href="#destinationHomeCarousel" role="button" data-slide="prev">
+            <i class="fa fa-chevron-left fa-lg text-muted"></i>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next text-faded" href="#destinationHomeCarousel" role="button" data-slide="next">
+            <i class="fa fa-chevron-right fa-lg text-muted"></i>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+
 
 <div class="cards">
-    <h2>Destinations</h2>
+    <h2>Catchers</h2>
   <div class="row">
-    <% @destinations.each do |d| %>
+    <% @catchers.each do |c| %>
       <div class="col-4 mb-3">
-        <%= link_to destinations_path(d) do %>
+        <%= link_to catchers_path(c) do %>
           <div class="card-trip">
-            <% unless d.pictures.blank?  %>
-           <%= cl_image_tag d.pictures.first.photo, height: 300, width: 400, crop: :fill %>
+            <% unless c.pictures.blank?  %>
+           <%= cl_image_tag c.pictures.first.photo, height: 300, width: 400, crop: :fill %>
            <% end %>
             <div class="card-trip-infos">
-              <h2><%= d.location %></h2>
+              <h2><%= c.user_name %></h2>
+              <p><%= c.gender %></p>
+              <p><%= c.hobbies %></p>
             </div>
           </div>
         <% end %>
@@ -27,14 +69,11 @@
 </div>
 
 
-
 <div class="footer">
-  <div class="links">
     <ul>
       <li><a href="#" > <i class="fab fa-facebook-square"></i> </a></li>
       <li><a href="#"> <i class="fab fa-github"></i> </a></li>
       <li><a href="#"> <i class="fab fa-instagram"></i> </a></li>
     </ul>
-  </div>
-  <h5>Trip Catcher was coded with ❤️ from Buzzkito Casablanca</h5>
+  <p>Trip Catcher was coded with love from Buzzkito Casablanca</p>
 </div>
