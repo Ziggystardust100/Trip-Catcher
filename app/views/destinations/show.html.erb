@@ -42,6 +42,13 @@
 <div class="box">
 
 <div class="container">
+  <div class="row" id="icon">
+      <% if catcher_signed_in? %>
+      <%= link_to destination_favourites_path(@destination), method: :post  do%>
+      <i class="fas fa-feather-alt"></i>
+      <% end %>
+<% end %>
+  </div>
 
   <div class= "row">
         <h2>Description</h2>
@@ -54,9 +61,7 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam fugiat magnam distinctio? Itaque porro sed dicta ut placeat nemo exercitationem ipsum numquam debitis hic officia, doloremque magnam nihil, cumque velit.</p>
   </div>
   <%= link_to "BACK",  destinations_path, class: "btn btn-secondary btn-lg btn-block m-3"%>
-  <% if catcher_signed_in? %>
-      <%= link_to "LIKE", destination_favourites_path(@destination), class: "btn btn-danger btn-lg btn-block m-3", method: :post %>
-<% end %>
+
 </div>
 
 
@@ -77,6 +82,7 @@
 
 
 </div>
+
 
 
 
