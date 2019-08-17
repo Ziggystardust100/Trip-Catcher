@@ -1,7 +1,9 @@
 .profile-image {
-  margin-top: 20px;
+margin: 20px;
   width: 250px;
+  height: 250px;
   border-radius: 50%;
+  object-fit: cover;
 }
 .profile-text {
   margin-top: 20px;

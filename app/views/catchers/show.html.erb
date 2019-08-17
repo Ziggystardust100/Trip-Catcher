@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-5">
           <div class="profile-center">
-            <%= image_tag "sheep", alt: "alttext", class: 'profile-image'%>
+            <%= cl_image_tag @catcher.pictures.first.photo, class: 'profile-image'%>
             </div>
         </div >
         <div class="col-md-7   ">
