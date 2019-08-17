@@ -1,0 +1,23 @@
+.profile-image {
+  margin-top: 20px;
+  width: 250px;
+  border-radius: 50%;
+}
+.profile-text {
+  margin-top: 20px;
+  font-family: verdana, sans-serif;
+  text-shadow: 3px 2px 3px rgba(255,255,255,.2);
+}
+.profile-card {
+// display: flex;
+ margin-top: 20px;
+  box-shadow:1px 1px 4px rgba(0,0,0,0.58);
+  border-radius: 5px;
+}
+.profile-center {
+display: flex;
+justify-content: center;
+}
+#go-back {
+  margin-left: 180px;
+}
