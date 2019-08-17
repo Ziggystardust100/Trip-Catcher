@@ -54,6 +54,9 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam fugiat magnam distinctio? Itaque porro sed dicta ut placeat nemo exercitationem ipsum numquam debitis hic officia, doloremque magnam nihil, cumque velit.</p>
   </div>
   <%= link_to "BACK",  destinations_path, class: "btn btn-secondary btn-lg btn-block m-3"%>
+  <% if catcher_signed_in? %>
+      <%= link_to "LIKE", destination_favourites_path(@destination), class: "btn btn-danger btn-lg btn-block m-3", method: :post %>
+<% end %>
 </div>
 
 
