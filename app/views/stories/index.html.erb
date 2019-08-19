@@ -1,0 +1,23 @@
+<div class="container">
+  <br>
+  <h1>Our best stories (<%= Story.count %>)</h1>
+
+  <div class="row">
+    <% @stories.each do |s| %>
+      <div class="col-4 mb-3 ">
+      <%= link_to story_path(s) do %>
+        <div class="card-category" style='
+        background-image: url("<%= cl_image_path s.pictures.first.photo, height: 800, width: 800, crop: :fill  unless s.pictures.blank?%>")
+        '>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= s.title %></h2>
+              <h2><%= s.rating %>*</h2>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

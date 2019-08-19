@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: url('<%= image_path("journey.jpg") %>');">
   <div class="container home">
-    <h1>Catch your fullfilling journey</h1>
-    <p>And find your travelling budy through a perfect match!</p>
+    <h1>Catch your fulfilling journey</h1>
+    <p>And find your travelling buddy through a perfect match!</p>
       <%= form_tag destinations_path, method: :get do %>
       <div class="form-row">
           <%= text_field_tag :query,
@@ -17,17 +17,19 @@
 <br>
 
 <div class="container-fluid cards">
-    <h2>Destinations</h2>
+  <h2 > <span class="landing-page-titles">Destinations</span></h2>
   <div class="row">
     <% @destinations.first(3).each do |d| %>
       <div class="col-4 mb-3">
         <%= link_to destinations_path(d) do %>
           <div class="card-trip">
             <% unless d.pictures.blank?  %>
-           <%= cl_image_tag d.pictures.first.photo, height: 300, width: 400, crop: :fill %>
+           <%= cl_image_tag d.pictures.first.photo, height: 800, width: 800, crop: :fill %>
            <% end %>
             <div class="card-trip-infos">
               <h2><%= d.location %></h2>
+              <p><%= d.description %></p>
+              <p><%= d.price %></p>
             </div>
           </div>
         <% end %>
@@ -36,8 +38,8 @@
   </div>
 </div>
 
- <div class="container-fluid cards">
-    <h2>Catchers</h2>
+<div class="container-fluid cards">
+  <h2 ><span class="landing-page-titles">Catchers</span></h2>
   <div class="row">
     <% @catchers.first(3).each do |c| %>
       <div class="col-4 mb-3">
@@ -58,7 +60,27 @@
   </div>
 </div>
 
-
+<div class="container-fluid cards">
+  <h2 ><span class="landing-page-titles">Stories</span></h2>
+  <div class="row">
+    <% @stories.first(3).each do |s| %>
+      <div class="col-4 mb-3">
+        <%= link_to stories_path(s) do %>
+          <div class="card-trip">
+            <% unless s.pictures.blank?  %>
+           <%= cl_image_tag s.pictures.first.photo, height: 300, width: 400, crop: :fill %>
+           <% end %>
+            <div class="card-trip-infos">
+              <h2><%= s.title %></h2>
+              <p><%= s.rating %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<hr>
 <div class="footer">
     <ul>
       <li><a href="#" > <i class="fab fa-facebook-square"></i> </a></li>

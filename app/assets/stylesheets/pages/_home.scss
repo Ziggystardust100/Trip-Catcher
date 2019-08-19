@@ -6,10 +6,8 @@ body {
    background-repeat: no-repeat;
   height: 100%;
   background-attachment: fixed;
-
   margin: 0;
 }
-
 a {
   text-decoration: none;
   color: inherit;
@@ -23,7 +21,6 @@ a {
   background-position: center;
   padding: 200px 0;
 }
-
 .home h1 {
   color: #EDF2F4;
   font-size: 50px;
@@ -66,7 +63,17 @@ a {
   background-size: cover;
   padding: 10px;
 }
-
 .home-input {
   width: 90%;
+}
+.landing-page-titles {
+  margin: 25px;
+  border-bottom: 25px;
+  background-color: #fffaf0;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.44);
 }
