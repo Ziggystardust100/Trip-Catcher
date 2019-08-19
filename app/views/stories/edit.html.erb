@@ -1,12 +1,10 @@
 <div class="container">
   <br>
-  <h1>New Story </h1>
-  <h2>Tell us more about your journey... </h2>
+  <h1>Edit Story </h1>
   <%= simple_form_for @story, html: {multipart: true} do |f| %>
   <%= f.simple_fields_for :pictures do |p| %>
     <%= p.file_field :photo, :multiple => true, name: "pics[photo][]"%>
   <% end %>
-
     <%= f.input :title %>
     <%= f.input :rating, collection: (1..5).to_a %>
     <%= f.input :content %>
