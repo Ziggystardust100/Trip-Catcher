@@ -51,14 +51,14 @@
   </div>
 
   <div class= "row">
-        <h2>Description</h2>
+        <p><h2>Description</h2></p>
         <p><%= @destination.description %>.</p>
   </div>
 
 
  <div class="row">
-      <h2>Recomandations</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam fugiat magnam distinctio? Itaque porro sed dicta ut placeat nemo exercitationem ipsum numquam debitis hic officia, doloremque magnam nihil, cumque velit.</p>
+      <p><h2>Recomandations</h2></p>
+      <p><%= @destination.recomandation %></p>
   </div>
   <%= link_to "BACK",  destinations_path, class: "btn btn-secondary btn-lg btn-block m-3"%>
 
@@ -70,9 +70,10 @@
  <div class="ava">
    <div class="container">
     <h2>Catchers</h2>
-     <% Catcher.all.each do |c|%>
+     <% @destination.catchers.each do |c|%>
      <%= link_to catcher_path(c) do %>
-  <img class="avatar-large" alt="avatar-large" src="https://modernfarmer.com/wp-content/uploads/2017/12/Funny-Sheep-Facts.jpg"/><% end %>
+     <%= cl_image_tag c.pictures.first.photo , class: "avatar-large", alt: "avatar-large"%>
+     <% end %>
     <% end %>
  </div>
 
