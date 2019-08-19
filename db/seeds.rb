@@ -40,10 +40,20 @@ pic2 = Picture.new(destination_id: berlin.id)
 pic2.remote_photo_url = url2
 pic2.save
 
-url3 ="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/c3/ff/e0.jpg"
-pic3 = Picture.new(destination_id:casablanca.id)
-pic3.remote_photo_url = url3
-pic3.save
+url1casa ="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/c3/ff/e0.jpg"
+pic1casa = Picture.new(destination_id:casablanca.id)
+pic1casa.remote_photo_url = url1casa
+pic1casa.save
+
+url2casa ="https://media.tacdn.com/media/attractions-splice-spp-674x446/06/71/d8/6c.jpg"
+pic2casa = Picture.new(destination_id:casablanca.id)
+pic2casa.remote_photo_url = url2casa
+pic2casa.save
+
+url3casa ="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/c3/ff/de.jpg"
+pic3casa = Picture.new(destination_id:casablanca.id)
+pic3casa.remote_photo_url = url3casa
+pic3casa.save
 
 # Catcher pics
 url = "https://i.pinimg.com/564x/de/85/6e/de856e73fb361b843a96c252c9be24f4.jpg"
@@ -70,3 +80,5 @@ url2 = "https://i.pinimg.com/564x/03/20/d2/0320d23dfb8a7a6959f2cdbf54707ed2.jpg"
 pic2 = Picture.new(catcher_id: jd1.id)
 pic2.remote_photo_url = url2
 pic2.save
+
+puts "seeds are done!"
