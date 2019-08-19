@@ -11,7 +11,7 @@ margin: 20px;
   text-shadow: 3px 2px 3px rgba(255,255,255,.2);
 }
 .profile-card {
-// display: flex;
+  position: relative;
  margin-top: 20px;
   box-shadow:1px 1px 4px rgba(0,0,0,0.58);
   border-radius: 5px;
@@ -22,4 +22,15 @@ justify-content: center;
 }
 #go-back {
   margin-left: 180px;
+}
+#edit-catcher {
+  position: absolute;
+  top:15px;
+  right:15px;
+  z-index: 2;
+
+}
+.to-the-line-profile {
+  white-space: pre-line;
+  margin: 35px;
 }
