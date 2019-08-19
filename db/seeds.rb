@@ -16,6 +16,7 @@ jd1 = Catcher.create!(email: 'john1@doe.com', password: 'qwerty', user_name: 'jo
 london = Destination.create!(location: 'london', description: 'cool', price: 90, recomandation:'Go to see Tower of London')
 paris = Destination.create!(location: 'paris', description: 'beautiful', price: 85,recomandation:'Go to see Eiffel Tower')
 berlin = Destination.create!(location: 'berlin', description: 'street art', price: 70,recomandation:'Go to see Brandenburg Gate')
+casablanca = Destination.create!(location: 'casablanca', description: 'place to be',price: 75, recomandation:'Go to see Hassan II Mosque')
 # Create Favorites
 favourites = Favourite.create!(catcher_id: jd.id, destination_id:london.id)
 # Create Trips
@@ -38,6 +39,11 @@ url2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmBbmfctjfTWAzNBMA
 pic2 = Picture.new(destination_id: berlin.id)
 pic2.remote_photo_url = url2
 pic2.save
+
+url3 ="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/c3/ff/e0.jpg"
+pic3 = Picture.new(destination_id:casablanca.id)
+pic3.remote_photo_url = url3
+pic3.save
 
 # Catcher pics
 url = "https://i.pinimg.com/564x/de/85/6e/de856e73fb361b843a96c252c9be24f4.jpg"
