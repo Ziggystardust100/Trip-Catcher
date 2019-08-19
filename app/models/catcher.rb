@@ -11,6 +11,7 @@ class Catcher < ApplicationRecord
   has_many :destinations, through: :favourites
   has_many :trips, through: :invitations
   has_many :conversations
+  accepts_nested_attributes_for :pictures, allow_destroy: true
 
 
 end

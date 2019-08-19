@@ -1,0 +1,21 @@
+<div class="container">
+  <br>
+  <h1>My Profile </h1>
+  <%= simple_form_for @catcher do |f| %>
+  <%= f.simple_fields_for :pictures do |p| %>
+    <%= p.input :photo %>
+    <%= cl_image_tag p.object.photo, class: 'profile-image'%>
+
+  <% end %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :user_name %>
+    <%= f.input :gender %>
+    <%= f.input :occupation %>
+    <%= f.input :hobbies %>
+    <%= f.input :past_destinations%>
+    <%= f.input :description%>
+    <%= f.submit class: 'btn btn-warning btn-block' %>
+  <% end %>
+  <hr>
+</div>
