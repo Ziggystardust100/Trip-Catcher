@@ -2,14 +2,13 @@
   <br>
   <h1>Our best stories (<%= Story.count %>)</h1>
 
-  <div class="cards-story">
+  <div class="row">
     <% @stories.each do |s| %>
-      <div class="col-4 mb-3">
+      <div class="col-4 mb-3 ">
       <%= link_to story_path(s) do %>
-        <div class="card-category">
-          <% unless s.pictures.blank?  %>
-            <%= cl_image_tag s.pictures.first.photo, height: 800, width: 800, crop: :fill %>
-          <% end %>
+        <div class="card-category" style='
+        background-image: url("<%= cl_image_path s.pictures.first.photo, height: 800, width: 800, crop: :fill  unless s.pictures.blank?%>")
+        '>
           <div class="card-trip-infos">
             <div>
               <h2><%= s.title %></h2>
