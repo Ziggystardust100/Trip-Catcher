@@ -8,7 +8,7 @@ def index
       lat: destination.latitude,
       lng: destination.longitude,
       infoWindow: render_to_string(partial: "info_window", locals: { destination: destination }),
-      image_url: helpers.asset_url('logo-dark.svg')
+      image_url: helpers.asset_url('feather.jpg')
     }
 
 

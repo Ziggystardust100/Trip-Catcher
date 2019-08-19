@@ -1,0 +1,13 @@
+<div class="container">
+  <br>
+  <h1>New Story </h1>
+  <h2>Tell us more about your journey... </h2>
+  <%= simple_form_for @story do |f| %>
+    <%= f.input :title %>
+    <%= f.input :rating, collection: (1..5).to_a %>
+    <%= f.input :content %>
+    <%= f.association :destination, label_method: :location %>
+    <%= f.submit class: 'btn btn-warning btn-block' %>
+  <% end %>
+  <hr>
+</div>
