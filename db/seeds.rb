@@ -18,11 +18,11 @@ marrakech = Destination.create!(location: 'Marrakech', description: 'cool', pric
 paris = Destination.create!(location: 'Paris', description: 'beautiful', price: 85)
 berlin = Destination.create!(location: 'Berlin', description: 'street art', price: 70)
 
-london = Destination.create!(location: 'london', description: 'cool', price: 90, recomandation:'Go to see Tower of London')
-paris = Destination.create!(location: 'paris', description: 'beautiful', price: 85,recomandation:'Go to see Eiffel Tower')
-berlin = Destination.create!(location: 'berlin', description: 'street art', price: 70,recomandation:'Go to see Brandenburg Gate')
+london = Destination.create!(location: 'london', description: 'cool', price: 90, recommendation:'Go to see Tower of London')
+paris = Destination.create!(location: 'paris', description: 'beautiful', price: 85,recommendation:'Go to see Eiffel Tower')
+berlin = Destination.create!(location: 'berlin', description: 'street art', price: 70,recommendation:'Go to see Brandenburg Gate')
 
-casablanca = Destination.create!(location: 'casablanca', description: 'place to be',price: 75, recomandation:'Go to see Hassan II Mosque')
+casablanca = Destination.create!(location: 'casablanca', description: 'place to be',price: 75, recommendation:'Go to see Hassan II Mosque')
 
 
 

@@ -21,7 +21,7 @@
   <div class="row">
     <% @destinations.first(3).each do |d| %>
       <div class="col-4 mb-3">
-        <%= link_to destinations_path(d) do %>
+        <%= link_to destination_path(d) do %>
           <div class="card-trip">
             <% unless d.pictures.blank?  %>
            <%= cl_image_tag d.pictures.first.photo, height: 800, width: 800, crop: :fill %>
@@ -43,7 +43,7 @@
   <div class="row">
     <% @catchers.first(3).each do |c| %>
       <div class="col-4 mb-3">
-        <%= link_to catchers_path(c) do %>
+        <%= link_to catcher_path(c) do %>
           <div class="card-trip">
             <% unless c.pictures.blank?  %>
            <%= cl_image_tag c.pictures.first.photo, height: 300, width: 400, crop: :fill %>
