@@ -22,6 +22,10 @@ london = Destination.create!(location: 'london', description: 'cool', price: 90,
 paris = Destination.create!(location: 'paris', description: 'beautiful', price: 85,recomandation:'Go to see Eiffel Tower')
 berlin = Destination.create!(location: 'berlin', description: 'street art', price: 70,recomandation:'Go to see Brandenburg Gate')
 
+casablanca = Destination.create!(location: 'casablanca', description: 'place to be',price: 75, recomandation:'Go to see Hassan II Mosque')
+
+
+
 # Create Favorites
 favourites = Favourite.create!(catcher_id: jd.id, destination_id:marrakech.id)
 # Create Trips
@@ -44,6 +48,21 @@ url2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmBbmfctjfTWAzNBMA
 pic2 = Picture.new(destination_id: berlin.id)
 pic2.remote_photo_url = url2
 pic2.save
+
+url1casa ="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/c3/ff/e0.jpg"
+pic1casa = Picture.new(destination_id:casablanca.id)
+pic1casa.remote_photo_url = url1casa
+pic1casa.save
+
+url2casa ="https://media.tacdn.com/media/attractions-splice-spp-674x446/06/71/d8/6c.jpg"
+pic2casa = Picture.new(destination_id:casablanca.id)
+pic2casa.remote_photo_url = url2casa
+pic2casa.save
+
+url3casa ="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/c3/ff/de.jpg"
+pic3casa = Picture.new(destination_id:casablanca.id)
+pic3casa.remote_photo_url = url3casa
+pic3casa.save
 
 # Catcher pics
 url = "https://i.pinimg.com/564x/de/85/6e/de856e73fb361b843a96c252c9be24f4.jpg"
@@ -71,8 +90,12 @@ pic2 = Picture.new(catcher_id: jd1.id)
 pic2.remote_photo_url = url2
 pic2.save
 
+
+puts "seeds are done!"
+
 # Stories pics
 url = "https://i.pinimg.com/564x/a5/b5/31/a5b5313a44156f69ae9db37292393ca4.jpg"
 pic = Picture.new(destination_id: marrakech.id)
 pic.remote_photo_url = url
 pic.save
+
