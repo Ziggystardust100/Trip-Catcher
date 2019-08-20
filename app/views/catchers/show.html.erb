@@ -11,9 +11,17 @@
         <div class="col-md-7   ">
           <div class="profile-text">
         <h3 class="card-title "><%= @catcher.user_name %></h3>
-        <p> <%= @catcher.gender %> </p>
+        <hr>
+        <h4> <%= @catcher.gender %> </h4>
         <h4> <%= @catcher.occupation %> </h4>
         <h4> <%= @catcher.hobbies %> </h4>
+        <h4>favourite upcoming destinations:</h4>
+         <% @catcher.favourites.each do |favourite| %>
+         <h4 class="to-the-line-profile"><i class="fas fa-globe-europe"></i></i><%= favourite.destination.location %></h4>
+         <%end %>
+         <% @catcher.friends.each do |friend| %>
+         <h4><%= friend.user_name %></h4>
+         <%end %>
         <h4> past destinations : </h4>
         <h4 class="to-the-line-profile"><%= @catcher.past_destinations %></h4>
         </div>

@@ -7,7 +7,7 @@ class FriendRequestsController < ApplicationController
     authorize @friend_request
 
     if @friend_request.save
-      redirect_to friend_requests_path
+      redirect_to catchers_path
     else
       redirect_to catcher_path(friend)
     end
