@@ -15,7 +15,15 @@
           <p class="card-text"><%= catcher.gender %></p>
           <p class="card-text"><%= catcher.birth_date %></p>
           <p class="card-text"><%= catcher.occupation %></p>
-
+          <% if (FriendRequest.where(friend_id: catcher, catcher_id: current_catcher).blank? && FriendRequest.where(friend_id: current_catcher, catcher_id: catcher).blank? &&
+            Friendship.where(friend_id: catcher, catcher_id: current_catcher).blank? && Friendship.where(friend_id: current_catcher, catcher_id: catcher).blank?
+            ) && catcher != current_catcher%>
+          <%= link_to 'Add friend', catcher_friend_requests_path(catcher), method: :post, class: 'btn btn-warning' %>
+          <% elsif Friendship.where(friend_id: catcher, catcher_id: current_catcher).blank?  && catcher != current_catcher%>
+            <p class="card-text btn btn-success">Friends</p>
+          <% elsif FriendRequest.where(friend_id: catcher, catcher_id: current_catcher).blank? && FriendRequest.where(friend_id: current_catcher, catcher_id: catcher).blank? && catcher != current_catcher%>
+            <p class="card-text btn btn-danger">Pending Request</p>
+          <% end %>
       </div>
       <div><%= cl_image_tag catcher.pictures.first.photo , class:'b'%></div>
 
