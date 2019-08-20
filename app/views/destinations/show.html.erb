@@ -37,10 +37,16 @@
 <div class="container">
   <div class="row" id="icon">
       <% if catcher_signed_in? %>
-      <%= link_to destination_favourites_path(@destination), method: :post  do%>
-      <i class="fas fa-feather-alt"></i>
+      <% if Favourite.where(destination: @destination, catcher: current_catcher).blank? %>
+        <%= link_to destination_favourites_path(@destination), method: :post  do%>
+        <i class="fas fa-feather-alt"></i>
+        <% end %>
+      <% else %>
+        <%= link_to favourite_path(Favourite.where(destination: @destination, catcher: current_catcher).first), method: :delete  do%>
+          <i class="fas fa-trash" id = "feather-greay"></i>
+        <% end %>
       <% end %>
-<% end %>
+    <% end %>
   </div>
 
   <div class= "row">
