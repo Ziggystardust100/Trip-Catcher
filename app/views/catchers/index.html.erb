@@ -15,18 +15,20 @@
           <p class="card-text"><%= catcher.gender %></p>
           <p class="card-text"><%= catcher.birth_date %></p>
           <p class="card-text"><%= catcher.occupation %></p>
-          <% if (FriendRequest.where(friend_id: catcher, catcher_id: current_catcher).blank? && FriendRequest.where(friend_id: current_catcher, catcher_id: catcher).blank? &&
-            Friendship.where(friend_id: catcher, catcher_id: current_catcher).blank? && Friendship.where(friend_id: current_catcher, catcher_id: catcher).blank?
-            ) && catcher != current_catcher%>
+          <% if !catcher.pending_friends.include?(current_catcher) && FriendRequest.where(friend: catcher, catcher: current_catcher).blank? && !catcher.friends.include?(current_catcher) && catcher != current_catcher%>
           <%= link_to 'Add friend', catcher_friend_requests_path(catcher), method: :post, class: 'btn btn-warning' %>
-          <% elsif Friendship.where(friend_id: catcher, catcher_id: current_catcher).blank?  && catcher != current_catcher%>
+
+          <% elsif !catcher.pending_friends.include?(current_catcher) && FriendRequest.where(friend: catcher, catcher: current_catcher).blank? && catcher != current_catcher%>
             <p class="card-text btn btn-success">Friends</p>
-          <% elsif FriendRequest.where(friend_id: catcher, catcher_id: current_catcher).blank? && FriendRequest.where(friend_id: current_catcher, catcher_id: catcher).blank? && catcher != current_catcher%>
+
+          <% elsif !catcher.friends.include?(current_catcher) &&  catcher != current_catcher%>
             <p class="card-text btn btn-danger">Pending Request</p>
           <% end %>
-      </div>
-      <div><%= cl_image_tag catcher.pictures.first.photo , class:'b'%></div>
 
+      </div>
+        <% unless catcher.pictures.empty? %>
+      <div><%= cl_image_tag catcher.pictures.first.photo , class:'b'%></div>
+        <%end %>
       </div>
 
   </div>
