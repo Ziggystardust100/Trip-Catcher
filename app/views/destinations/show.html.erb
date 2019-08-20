@@ -77,7 +77,11 @@
     <h2>Catchers</h2>
      <% @destination.catchers.each do |c|%>
      <%= link_to catcher_path(c) do %>
-     <%= cl_image_tag c.pictures.first.photo , class: "avatar-large", alt: "avatar-large"%>
+     <% if c.pictures.blank? %>
+      <%= image_tag "sheep", alt: "alttext", class: 'avatar-large' %>
+     <% else %>
+      <%= cl_image_tag c.pictures.first.photo , class: "avatar-large", alt: "avatar-large"%>
+     <% end %>
      <% end %>
     <% end %>
  </div>
