@@ -1,105 +1,72 @@
 
-<div>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-
-    <% @destination.pictures.each_with_index do |p, index|%>
-      <div class="carousel-item <%= 'active' if index == 0 %>">
-        <%= cl_image_tag p.photo,class: "d-block w-100",alt: "First slide" %>
-        <div class="carousel-caption d-none d-md-block">
-          <h5><%= @destination.location %></h5>
+<div class="container">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <% @destination.pictures.each_with_index do |p, index|%>
+        <div class="carousel-item <%= 'active' if index == 0 %>">
+          <%= cl_image_tag p.photo,class: "d-block w-100 carousel-img",alt: "First slide" %>
+          <div class="carousel-caption d-none d-md-block">
+            <h5><%= @destination.location %></h5>
+          </div>
+        </div>
+      <% end %>
+    </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+  </div>
+    <div class="container">
+      <div class="row">
+        <div id="icon">
+        <% if catcher_signed_in? %>
+        <% if Favourite.where(destination: @destination, catcher: current_catcher).blank? %>
+          <%= link_to destination_favourites_path(@destination), method: :post  do%>
+          <i class="fas fa-feather-alt"></i>
+          <% end %>
+        <% else %>
+          <%= link_to favourite_path(Favourite.where(destination: @destination, catcher: current_catcher).first), method: :delete  do%>
+            <i class="fas fa-trash" id = "feather-greay"></i>
+            <% end %>
+          <% end %>
+        <% end %>
         </div>
       </div>
-    <% end %>
+      <div class= "row">
+        <div class="col-8">
+          <p><h2>Description : </h2></p>
+          <p><%= @destination.description %>.</p>
+          <h3>Recommendation :</h3>
+          <p><%= @destination.recommendation %></p>
+          <%= link_to "Back", destinations_path, class: "btn btn-info m-3"%>
+        </div>
+        <div class="col-4">
+          <h3>Catchers</h3>
+          <div class="ava">
+              <% @destination.catchers.each do |c|%>
+              <%= link_to catcher_path(c) do %>
+                <% if c.pictures.blank? %>
+                  <%= image_tag "sheep", alt: "alttext", class: 'avatar-large' %>
+                <% else %>
+                  <%= cl_image_tag c.pictures.first.photo , class: "avatar-large", alt: "avatar-large"%>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
 
-
-
+        </div>
+      </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
-</div>
-
-
-<div class="box">
-
-<div class="container">
-  <div class="row" id="icon">
-      <% if catcher_signed_in? %>
-      <% if Favourite.where(destination: @destination, catcher: current_catcher).blank? %>
-        <%= link_to destination_favourites_path(@destination), method: :post  do%>
-        <i class="fas fa-feather-alt"></i>
-        <% end %>
-      <% else %>
-        <%= link_to favourite_path(Favourite.where(destination: @destination, catcher: current_catcher).first), method: :delete  do%>
-          <i class="fas fa-trash" id = "feather-greay"></i>
-        <% end %>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class= "row">
-    <div class="col">
-        <p><h2>Description</h2></p>
-        <p><%= @destination.description %>.</p>
-    </div>
-
-  </div>
-
-
- <div class="row">
-  <div class="col">
-      <p><h2>Recommendation</h2></p>
-      <p><%= @destination.recommendation %></p>
-  </div>
-
-  </div>
-  <%= link_to "BACK",  destinations_path, class: "btn btn-secondary btn-lg btn-block m-3"%>
-
-</div>
-
-
-
-
- <div class="ava">
-   <div class="container">
-    <h2>Catchers</h2>
-     <% @destination.catchers.each do |c|%>
-     <%= link_to catcher_path(c) do %>
-     <% if c.pictures.blank? %>
-      <%= image_tag "sheep", alt: "alttext", class: 'avatar-large' %>
-     <% else %>
-      <%= cl_image_tag c.pictures.first.photo , class: "avatar-large", alt: "avatar-large"%>
-     <% end %>
-     <% end %>
-    <% end %>
- </div>
-
- </div>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
 
 <!-- <h1>Show</h1>
 <h1><%= @destination.location %></h1>
