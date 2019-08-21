@@ -4,35 +4,31 @@
   border-radius: 50%;
   margin: 10px;
 }
-
 .box {
   display:flex;
   justify-content:space-between;
+}
 
 #icon{
-  justify-content:space-around;
-  margin:10px;
-
-i{
-  text-align: center;
-  font-size: 50px;
-  color: #af593a
-}}
-
-
+  margin-left: auto;
+  i{
+    background-color:  #af593a;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    padding: 10px;
+  }
+}
 .ava{
   display:flex;
   justify-content:space-around;
 }
-
 #feather-greay{
   color: #ffbd9e;
 }
-
 .small{
   font-size: 1rem;
-}
-
 }
 
 
