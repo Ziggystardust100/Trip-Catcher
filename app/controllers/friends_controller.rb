@@ -4,13 +4,10 @@ class FriendsController < ApplicationController
   end
 
   def destroy
-    current_catcher.remove_friend(@friend)
-  end
-
-  private
-
-  def set_friend
     @friend = current_catcher.friends.find(params[:id])
-  end
+    current_catcher.remove_friend(@friend)
+    authorize @friend
 
+    redirect_to catcher_path(current_catcher)
+  end
 end

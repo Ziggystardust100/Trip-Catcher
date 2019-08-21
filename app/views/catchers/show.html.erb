@@ -1,37 +1,85 @@
-<div class="container profile-card">
+<div class="container show-cnt">
     <% if current_catcher == @catcher %>
       <%= link_to 'Edit', edit_catcher_path(@catcher), class: "btn btn-warning", id: 'edit-catcher' %>
     <% end %>
-    <div class="row">
+      <div class="row s  profile-card mt-2">
         <div class="col-md-5">
           <div class="profile-center">
+            <% unless @catcher.pictures.empty? %>
             <%= cl_image_tag @catcher.pictures.first.photo, class: 'profile-image'%>
+            <% end %>
             </div>
         </div >
         <div class="col-md-7   ">
           <div class="profile-text">
-        <h3 class="card-title "><%= @catcher.user_name %></h3>
-        <hr>
-        <h4> <%= @catcher.gender %> </h4>
-        <h4> <%= @catcher.occupation %> </h4>
-        <h4> <%= @catcher.hobbies %> </h4>
-        <h4>favourite upcoming destinations:</h4>
-         <% @catcher.favourites.each do |favourite| %>
-         <h4 class="to-the-line-profile"><i class="fas fa-globe-europe"></i></i><%= favourite.destination.location %></h4>
-         <%end %>
-         <% @catcher.friends.each do |friend| %>
-         <h4><%= friend.user_name %></h4>
-         <%end %>
-        <h4> past destinations : </h4>
-        <h4 class="to-the-line-profile"><%= @catcher.past_destinations %></h4>
+            <h3 class="card-title "><%= @catcher.user_name %></h3>
+            <hr>
+            <h4 ><span class='txt-show'>Gender:</span><%= @catcher.gender %> </h4>
+
+            <h4><span class='txt-show'>Occupation:</span> <%= @catcher.occupation %></h4>
+            <h4><span class='txt-show'>Hobbies: </span> <%= @catcher.hobbies %></h4>
+            <h4><span class='txt-show'>Favourite destinations:</span><%@catcher.favourites.each do |favourite| %>
+            <h4 class="to-the-line-profile"><i class="fas fa-globe-europe"></i></i> <%= favourite.destination.location %> </h4>
+            <%end %></h4>
+            <h4> <span class='txt-show'> Friends: </span> </h4>
+              <% @catcher.friends.each do |friend| %>
+            <h4><%= friend.user_name %></h4>
+              <% if current_catcher == @catcher %>
+              <%= link_to 'delete Friend', friend_path(friend), method: 'delete',class: 'btn btn-danger ' %>
+              <%end%>
+            <%end%>
+            <h4> <span class='txt-show'>Visited places: </span>
+            <h4 class="to-the-line-profile"><%= @catcher.past_destinations %></h4>
+            </h4>
+          </div>
+        </div>
+        <h4 id="description p-2">About me:</h4>
+        <h5 class="to-the-line-profile p-2">  <%= @catcher.description%> </h5>
+      </div>
+      <br>
+      <div class="row s profile-card  mt-2">
+
+      <div class="col-md-6">
+        <div class="">
+          <% if current_catcher == @catcher %>
+            <h1>Outgoing</h1>
+           <div class="row">
+            <% @catcher.friend_requests.each do |fr|%>
+               <div class="col-6">
+                 <h4><%= fr.friend.user_name %> </h4> <div><%= cl_image_tag fr.friend.pictures.first.photo , class:'b'%></div>
+               </div>
+               <div class="col-6">
+                <%= link_to 'Cancel Friend Request', friend_request_path(fr), method: 'delete',class: 'btn btn-danger ' %>
+               </div>
+              <% end %>
+           </div>
+
+        <% end %>
         </div>
       </div>
-        <h5 class="to-the-line-profile"> <%= @catcher.description %> </h5>
+      <div class="col-md-6">
+        <div class="">
+          <% if current_catcher == @catcher %>
+              <h1>Incoming</h1>
+              <div class="row">
+                <% FriendRequest.where(friend: @catcher).each do |fr|%>
+                <div class="col-6">
+                  <h4><%= fr.catcher.user_name %> </h4>
+                  <div><%= cl_image_tag fr.catcher.pictures.first.photo , class:'b'%></div>
+                </div>
+                <div class="col-6">
+                  <%= link_to 'Accept Friend', friend_request_path(fr), method: 'patch',class: 'btn btn-warning ' %>
+                  <%= link_to 'Ignore Friend', friend_request_path(fr), method: 'delete',class: 'btn btn-danger ' %>
+                </div>
+
+                    <% end %>
+                <% end %>
+              </div>
+
+        </div>
+      </div>
     </div>
 </div>
-
-
-
 <br>
 <%= link_to "Go back", catchers_path, class: "btn btn-warning", id: 'go-back'  %>
 

@@ -22,7 +22,7 @@ class Catcher < ApplicationRecord
   accepts_nested_attributes_for :pictures, allow_destroy: true
 
   def remove_friend(friend)
-    current_catcher.friends.destroy(friend)
+    self.friends.destroy(friend)
   end
 
 end
