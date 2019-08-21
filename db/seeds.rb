@@ -14,14 +14,6 @@ pa = Catcher.create!(email: 'paul@doe.com', password: 'qwerty', user_name: 'Paul
 
 jd1 = Catcher.create!(email: 'john1@doe.com', password: 'qwerty', user_name: 'Johnny', first_name: 'John',  last_name: 'Doe', gender: 'male', birth_date: '01/02/70', occupation: 'traveller', past_destinations: 'paris, london', hobbies: 'blabla', description: "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).")
 
-# Create Destination
-
-marrakech = Destination.create!(location: 'Marrakech', description: 'cool', price: 90)
-london = Destination.create!(location: 'london', description: 'cool', price: 90, recommendation:'Go to see Tower of London')
-paris = Destination.create!(location: 'paris', description: 'beautiful', price: 85,recommendation:'Go to see Eiffel Tower')
-berlin = Destination.create!(location: 'berlin', description: 'street art', price: 70,recommendation:'Go to see Brandenburg Gate')
-
-casablanca = Destination.create!(location: 'casablanca', description: 'place to be',price: 75, recommendation:'Go to see Hassan II Mosque')
 
 # Create Destinations
 marrakech = Destination.create!(location: 'Marrakech', description: 'cool', price: 90, recommendation:'Reach the summit of Morocco at only few miles from the town')
