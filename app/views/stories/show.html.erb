@@ -4,12 +4,20 @@
     <%= cl_image_tag @story.pictures.last.photo, height: 800, width: 800, crop: :fill %>
   <% end %>
     <h3 class="card-trip-infos"><%= @story.title %></h3>
-    <p>Content: <%= @story.content %></p>
-        <p>Rating: <%= @story.rating %></p>
-    <%= link_to "Edit your story", edit_story_path(@story), class: "btn btn-info mb-2" %>
+    <p>Rating: <% @story.rating.times do%>
+      <i class="fas fa-feather-alt"></i>
+    <% end %></p>
+    <div class="separator"></div>
+    <div class="story-content">
+      <p>Content: <%= @story.content %></p>
+    </div>
+
+    <%= link_to "Edit your story", edit_story_path(@story), class: "btn btn-info mb-2 absolute"%>
     <br>
         <%= link_to stories_path, method: 'delete', class: 'card-link text-danger', data: {confirm: "Are you sure?"}  do %>
               <i class="fas fa-trash"></i> Delete
             <% end %>
   </div>
 </div>
+
+
