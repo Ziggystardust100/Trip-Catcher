@@ -1,4 +1,4 @@
-.card-trip{
+.card-trip-show-u{
   position : relative;
   height: 900px;
   width: 900px;
@@ -7,15 +7,22 @@
   -webkit-box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
   box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
+    overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 
-  img{
+  .story-img{
     height: 500px;
+    width:100%;
     border-radius:5px;
+    object-fit: cover;
   }
 
   p{
     text-align: left;
     font-size: 15px;
+    opacity: .7;
+    margin: 10px;
   }
   h3{
     text-align: left;
@@ -28,17 +35,30 @@
 
   .story-content{
     margin-top: 25px;
+    margin:10px;
   }
 
 
   .absolute{
   position: absolute;
-  top:495px;
+  top:485px;
   right:10px;
   z-index: 2;
+  border-radius: 5px;
+}
+.delete{
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
 }
 }
 
-.new-story{
- justify-content: flex-end;
-}
+// .new-story{
+//  justify-content: flex-end;
+
+//   padding: 16px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: flex-end;
+//   position: relative;
+// }
