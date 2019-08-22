@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   resources :stories, only: [:new, :create, :edit, :index, :show, :update, :destroy]
   resources :favourites, only: [:destroy]
 resources :friends, only: [:destroy, :index]
+resources :conversations do
+  resources :messages
+ end
+
 end
