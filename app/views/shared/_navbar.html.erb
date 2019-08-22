@@ -19,23 +19,19 @@
         <li class="nav-item">
           <%= link_to "Stories", stories_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Messages", stories_path, class: "nav-link" %>
-        </li>
         <li class="nav-item dropdown">
           <% if current_catcher.pictures.empty? %>
           <%= image_tag 'sheep.jpg', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Messages", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_catcher_session_path, method: :delete, class: "dropdown-item" %>
           </div>
           <% else %>
           <%= cl_image_tag current_catcher.pictures.first.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "My profile", catcher_path(current_catcher), class: "dropdown-item" %>
             <%= link_to "Messages", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_catcher_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>

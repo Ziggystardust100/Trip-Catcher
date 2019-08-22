@@ -1,5 +1,8 @@
 <div class="container">
+
   <div class="card-trip-show-u">
+
+
   <% unless @story.pictures.blank?  %>
     <%= cl_image_tag @story.pictures.last.photo, class: 'story-img', height: 800, width: 800, crop: :fill %>
   <% end %>

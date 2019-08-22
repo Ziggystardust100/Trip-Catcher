@@ -1,7 +1,10 @@
-.carousel-item{
-  height: 500px;
+.carousel-item {
+  height: 600px;
 }
-
 #destination {
   text-align: center;
+}
+.carousel-img {
+  margin: 0 auto;
+  object-fit: contain;
 }
