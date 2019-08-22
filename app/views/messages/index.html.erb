@@ -1,34 +1,46 @@
-<% if @over_ten %>
- <%= link_to 'Show Previous', '?m=all' %>
-<% end %>
-<div>
- <% @messages.each do |message| %>
-  <% if message.content %>
-   <% catcher = Catcher.find(message.catcher_id) %>
-   <div>
-    <div>
-     <div><strong><%= catcher.user_name %></strong>     <%= message.message_time %></div>
-      <div>
-       <div>
-          <i class="fas fa-caret-right"></i>
+<div class="wrapper-chat">
+   <% unless @reciever.pictures.empty? %>
 
-         <span><%= message.content %></span>
-          <% if message.read  %>
-         <span><i class="fas fa-check"></i></span>
-         <% end %>
-      </div>
-    </div>
-   </div>
- </div>
- <% end %>
-<% end %>
+    <%= cl_image_tag @reciever.pictures.first.photo, class: "avatar", id:"wrapper-img" %>
+    <% end %>
+    <%= @reciever.user_name %>
+
+
 </div>
-<%= form_for [@conversation, @message] do |f| %>
- <div>
-   <%= f.text_area :content%>
- </div>
- <%= f.text_field :catcher_id, value: current_catcher.id, type: :hidden %>
- <div>
-   <%= f.submit 'Add Reply'%>
- </div>
-<% end %>
+
+<div class="container message-container">
+  <% if @over_ten %>
+  <div class="text-center">
+      <%= link_to 'Show Previous', '?m=all', class: 'btn btn-warning btn-rounded btn-sm mb-3' %>
+  </div>
+
+  <% end %>
+  <% @messages.each do |message| %>
+    <% if message.content %>
+      <% catcher = Catcher.find(message.catcher_id) %>
+       <div class="<%= catcher == current_catcher ? 'message-orange' : 'message-blue' %>">
+          <p class='message-content'>
+            <span><%= message.content %></span>
+          </p>
+         <div class="<%= catcher == current_catcher ? 'message-timestamp-right' : 'message-timestamp-left' %>">
+          <strong><%= catcher.user_name %></strong>
+          <%= message.message_time %>
+            <% if message.read  %>
+              <span><i class="fas fa-check"></i></span>
+             <% end %>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="container">
+  <%= simple_form_for [@conversation, @message] do |f| %>
+       <%= f.input :content, label: false%>
+        <%= f.input :catcher_id, :input_html => { :value => current_catcher.id }, as: :hidden %>
+       <%= f.submit 'Add Reply', class: 'btn btn-warning btn-block'%>
+  <% end %>
+</div>
+
+
+
+
