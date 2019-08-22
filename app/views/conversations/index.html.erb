@@ -1,35 +1,45 @@
-<div>
- <h3>Mailbox</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class= "mail">
+      <h3>Mailbox</h3>
 
 
- <div>
-  <div>
-   <% @conversations.each do |conversation| %>
-   <% if conversation.sender_id == current_catcher.id ||  conversation.reciever_id == current_catcher.id %>
-    <% if conversation.sender_id == current_catcher.id %>
+
+      <% @conversations.each do |conversation| %>
+      <% if conversation.sender_id == current_catcher.id ||  conversation.reciever_id == current_catcher.id %>
+      <% if conversation.sender_id == current_catcher.id %>
       <% reciever = Catcher.find(conversation.reciever_id) %>
-    <% else %>
+      <% else %>
       <% reciever = Catcher.find(conversation.sender_id) %>
-    <% end %>
-    <%= link_to reciever.user_name,   conversation_messages_path(conversation)%>
-   <% end %>
-  <% end %>
+      <% end %>
+      <%= link_to reciever.user_name,   conversation_messages_path(conversation)%>
+      <% end %>
+      <% end %>
+      </div>
+    </div>
   </div>
- </div>
+
+
+
+  <div class="row">
+    <div class="col-sm">
+      <div class="friend">
+      <h3>All catchers</h3>
+
+
+
+      <% @catchers.each do |catcher| %>
+      <% if catcher.id != current_catcher.id %>
+      <div>
+      <%= catcher.user_name %> <%= link_to "Message me!", conversations_path(sender_id: current_catcher.id, reciever_id: catcher.id), method: 'post'%>
+      </div>
+    <% end %>
+   <% end %>
+   </div>
+  </div>
+
+
+
+  </div>
 </div>
-<div>
- <h3>All catchers</h3>
-
-
-
-  <div>
-   <% @catchers.each do |catcher| %>
-    <% if catcher.id != current_catcher.id %>
-     <div>
-   <%= catcher.user_name %> <%= link_to "Message me!", conversations_path(sender_id: current_catcher.id, reciever_id: catcher.id), method: 'post'%>
-     </div>
-  <% end %>
- <% end %>
- </div>
-</div>
-

@@ -6,9 +6,9 @@ class MessagesController < ApplicationController
   def index
   policy_scope(Message)
    @messages = @conversation.messages
-    if @messages.length > 10
+    if @messages.length > 8
      @over_ten = true
-     @messages = @messages[-10..-1]
+     @messages = @messages[-8..-1]
     end
     if params[:m]
      @over_ten = false
@@ -21,6 +21,7 @@ class MessagesController < ApplicationController
     end
    end
     @message = @conversation.messages.new
+    @reciever = @conversation.sender == current_catcher ? @conversation.reciever : @conversation.sender
   end
 
   def new
