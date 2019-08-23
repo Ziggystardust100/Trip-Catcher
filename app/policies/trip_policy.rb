@@ -1,5 +1,11 @@
 class TripPolicy < ApplicationPolicy
- def show?
+ class Scope < Scope
+    def resolve
+      scope.all
+    end
+ end
+
+  def show?
   true
   end
 
@@ -8,6 +14,6 @@ class TripPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
+    record.catcher == user
   end
 end

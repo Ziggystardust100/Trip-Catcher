@@ -1,0 +1,6 @@
+<div class="container">
+  <% @trips.each do |trp| %>
+  <p> <%= link_to trp.destination.location ,trip_path(trp) %> </p>
+  <% end %>
+</div>
+

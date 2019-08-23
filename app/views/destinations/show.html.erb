@@ -48,6 +48,8 @@
           <p><%= @destination.description %>.</p>
           <h3>Recommendation :</h3>
           <p><%= @destination.recommendation %></p>
+          <%= link_to "Back", destinations_path, class: "btn btn-info m-3"%>
+          <%= link_to "Create trip", new_destination_trip_path(@destination), class: "btn btn-success m-3" %>
 
         </div>
         <div class="col-4">

@@ -83,7 +83,45 @@
         </div>
       </div>
     </div>
+    <div class="row s profile-card  mt-2">
+      <div class="col-md-6">
+        <h1>Invitations Recieved</h1>
+        <% Invitation.where(catcher: @catcher).each do |f|%>
+        <p>  Sent by<%= f.trip.catcher.user_name %> </p>
+        <p><%= f.trip.destination.location %></p>
+        <p><%= f.trip.start_date %></p>
+        <p><%= f.trip.end_date %></p>
+        <% unless f.joined %>
+        <%= link_to 'Accept Invitation', invitation_path(f), method: 'patch',class: 'btn btn-warning ' %>
+        <% end %>
+        <%= link_to 'Decline Invitation', invitation_path(f), method: 'delete',class: 'btn btn-danger ' %>
+        <% end %>
+
+
+
+
+      </div>
+      <div class="col-md-6">
+        <h1>Invitations Sent</h1>
+        <% @catcher.trips.each do |trip|  %>
+        <p>  </p>
+        <p> <%= trip.destination.location  %> </p>
+        <% trip.invitations.each do |invitation| %>
+        <p> <%= invitation.catcher.user_name %> </p>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+
+
+
 </div>
 <br>
+
+
+
+
+
+
 <%= link_to "Go back", catchers_path, class: "btn btn-warning", id: 'go-back'  %>
 
