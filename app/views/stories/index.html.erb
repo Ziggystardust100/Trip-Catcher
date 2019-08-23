@@ -1,7 +1,8 @@
 <div class="container">
   <br>
-  <h1>Our best stories (<%= Story.count %>)</h1>
-
+  <h2 class="landing-page-titles" style="text-align: center">Our best stories (<%= Story.count %>) </h2>
+  <!-- <h1>Our best stories (<%= Story.count %>)</h1> -->
+<br>
   <div class="row">
     <% @stories.each do |s| %>
       <div class="col-4 mb-3 ">
@@ -23,7 +24,7 @@
     <% end %>
   </div>
   <div class = "row new-story">
-     <%= link_to "Tell new Story",   new_story_path, class: "btn btn-warning btn-lg  m-3"%>
+     <%= link_to "Tell a new Story",   new_story_path, class: "btn btn-warning btn-lg  m-3"%>
   </div>
 </div>
 
