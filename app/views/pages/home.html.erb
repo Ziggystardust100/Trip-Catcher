@@ -25,7 +25,7 @@
         <%= link_to destination_path(d) do %>
           <div class="card-trip">
             <% unless d.pictures.blank?  %>
-           <%= cl_image_tag d.pictures.first.photo, height: 800, width: 800, crop: :fill %>
+           <%= cl_image_tag d.pictures.first.photo, height: 300, width: 400, crop: :fill %>
            <% end %>
             <div class="card-trip-infos">
               <h2><%= d.location %></h2>

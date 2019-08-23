@@ -1,15 +1,13 @@
-<div class="container">
-
-
-
+<br>
+<div class="containers">
   <div class="card-trip-show-u">
-
-
   <% unless @story.pictures.blank?  %>
-    <%= cl_image_tag @story.pictures.last.photo, class: 'story-img', height: 800, width: 800, crop: :fill %>
+    <%= cl_image_tag @story.pictures.last.photo, class: 'story-img', height: 400, width: 500, crop: :fill %>
   <% end %>
-    <h3 class="card-trip-infos"><%= @story.title %></h3>
-    <p >Rating: <% @story.rating.times do%>
+    <div class="card-trip-infos">
+    <h3><%= @story.title %></h3>
+    <p>Created by <strong><%= @story.catcher.user_name %></strong></p>
+    <p>Rating: <% @story.rating.times do%>
       <i class="fas fa-feather-alt"></i>
     <% end %></p>
     <div class="separator"></div>
@@ -17,12 +15,13 @@
       <p>Content: <%= @story.content %></p>
     </div>
 
-    <%= link_to "Edit your story", edit_story_path(@story), class: "btn btn-info mb-2 absolute"%>
+      <%= link_to "Edit your story", edit_story_path(@story), class: "btn btn-info mb-2 absolute"%>
+
     <br>
-        <%= link_to stories_path, method: 'delete', class: 'card-link text-danger delete', data: {confirm: "Are you sure?"}  do %>
-              <i class="fas fa-trash"></i> Delete
-            <% end %>
+    <% if policy(@story).destroy? %>
+      <%= link_to stories_path, method: 'delete', class: 'card-link text-warning delete', data: {confirm: "Are you sure?"}  do %><i class="fas fa-trash"></i>
+      <% end %>
+    <% end %>
   </div>
 </div>
-
-
+<br>
