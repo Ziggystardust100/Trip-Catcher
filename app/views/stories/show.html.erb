@@ -1,10 +1,10 @@
 <br>
-<div class="containers">
+<div class="container">
   <div class="card-trip-show-u">
   <% unless @story.pictures.blank?  %>
-    <%= cl_image_tag @story.pictures.last.photo, class: 'story-img', height: 400, width: 500, crop: :fill %>
+    <%= cl_image_tag @story.pictures.last.photo, class: 'story-img', height: 500, width: 600, crop: :fill %>
   <% end %>
-    <div class="card-trip-infos">
+    <div class="card-trip-infos m-3">
     <h3><%= @story.title %></h3>
     <p>Created by <strong><%= @story.catcher.user_name %></strong></p>
     <p>Rating: <% @story.rating.times do%>
@@ -12,7 +12,9 @@
     <% end %></p>
     <div class="separator"></div>
     <div class="story-content">
-      <p>Content: <%= @story.content %></p>
+      <p>Content:
+        <br>
+        <%= @story.content %></p>
     </div>
 
       <%= link_to "Edit your story", edit_story_path(@story), class: "btn btn-info mb-2 absolute"%>

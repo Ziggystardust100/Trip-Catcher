@@ -1,5 +1,6 @@
-
+<br>
 <div class="container">
+  <div class= "destshow">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -28,28 +29,27 @@
     <div class="container">
       <div class="row">
         <div id="icon">
-        <% if catcher_signed_in? %>
-        <% if Favourite.where(destination: @destination, catcher: current_catcher).blank? %>
-          <%= link_to destination_favourites_path(@destination), method: :post  do%>
-          <i class="fas fa-feather-alt"></i>
-          <% end %>
-        <% else %>
-          <%= link_to favourite_path(Favourite.where(destination: @destination, catcher: current_catcher).first), method: :delete  do%>
-            <i class="fas fa-trash" id = "feather-greay"></i>
+          <% if catcher_signed_in? %>
+          <% if Favourite.where(destination: @destination, catcher: current_catcher).blank? %>
+            <%= link_to destination_favourites_path(@destination), method: :post  do%>
+            <i class="fas fa-feather-alt"></i>
+            <% end %>
+          <% else %>
+            <%= link_to favourite_path(Favourite.where(destination: @destination, catcher: current_catcher).first), method: :delete  do%>
+              <i class="fas fa-trash" id="feather-greay"></i>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
         </div>
       </div>
       <div class= "row">
-        <div class="col-8">
+        <div class="col-8 border-right">
           <p><h2>Description : </h2></p>
           <p><%= @destination.description %>.</p>
           <h3>Recommendation :</h3>
           <p><%= @destination.recommendation %></p>
           <%= link_to "Back", destinations_path, class: "btn btn-info m-3"%>
           <%= link_to "Create trip", new_destination_trip_path(@destination), class: "btn btn-success m-3" %>
-
 
         </div>
         <div class="col-4">
@@ -64,16 +64,12 @@
                 <% end %>
               <% end %>
             <% end %>
+             <div class="backbtn">  <%= link_to "Back", destinations_path, class: "btn btn-info m-3"%>
+              </div>
           </div>
-
         </div>
       </div>
   </div>
+  </div>
 </div>
-
-<!-- <h1>Show</h1>
-<h1><%= @destination.location %></h1>
-<h1><%= @destination.description %></h1>
-<h1><%= @destination.price %></h1> -->
-
-
+<br>
