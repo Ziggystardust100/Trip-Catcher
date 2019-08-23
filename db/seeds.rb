@@ -2,6 +2,8 @@
 require 'date'
 Trip.destroy_all
 Destination.destroy_all
+Message.destroy_all
+Conversation.destroy_all
 Catcher.destroy_all
 # Story.destroy_all
 
@@ -37,21 +39,42 @@ urlmarr = "https://i.pinimg.com/564x/b6/16/be/b616be22c50159e06661ca71a88f6f3c.j
 picmarr = Picture.new(destination_id: marrakech.id)
 picmarr.remote_photo_url = urlmarr
 picmarr.save
+  urlmarrq = "https://www.guiapaises.com/wp-content/uploads/2017/09/be7685026070406a215779b242f1aa2e_L.jpg"
+  picmarrq = Picture.new(destination_id: marrakech.id)
+  picmarrq.remote_photo_url = urlmarrq
+  picmarrq.save
 
 url1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIroKIE2x4QXKBZ4PvsUq3mDfwmHc5SGpqaek2ax_EPM379Q4U"
 pic1 = Picture.new(destination_id: paris.id)
 pic1.remote_photo_url = url1
 pic1.save
+  url11 = "https://i0.wp.com/www.followmeaway.com/wp-content/uploads/2019/05/shutterstock_1019364061.jpg?resize=700%2C465&ssl=1"
+  pic11 = Picture.new(destination_id: paris.id)
+  pic11.remote_photo_url = url11
+  pic11.save
+url11a = "https://joinusinfrance.com/wp-content/uploads/2016/08/paris-3257049-Pixabay-1200x628.jpg"
+pic11a = Picture.new(destination_id: paris.id)
+pic11a.remote_photo_url = url11a
+pic11a.save
+
 
 url2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmBbmfctjfTWAzNBMAEw8mPywGC89ybkW-411EjFLkyMQR4ODL"
 pic2 = Picture.new(destination_id: berlin.id)
 pic2.remote_photo_url = url2
 pic2.save
+  url2w = "https://www.dw.com/image/43901161_303.jpg"
+  pic2w = Picture.new(destination_id: berlin.id)
+  pic2w.remote_photo_url = url2w
+  pic2w.save
 
-urldl = "https://i.pinimg.com/564x/e2/e7/d9/e2e7d9661d7c6e46712f796e99755200.jpg"
+urldl = "https://static.standard.co.uk/s3fs-public/thumbnails/image/2018/07/10/11/Future-London.jpg"
 picdl = Picture.new(destination_id: london.id)
 picdl.remote_photo_url = urldl
 picdl.save
+  urldla = "https://www.parkgrandkensington.co.uk/blog/wp-content/uploads/2019/02/top-places-in-London.jpg"
+  picdla = Picture.new(destination_id: london.id)
+  picdla.remote_photo_url = urldla
+  picdla.save
 
 urlb = "https://topasecolodge.com/wp-content/uploads/2018/05/Hanoi00.jpg"
 picb = Picture.new(destination_id: hanoi.id)

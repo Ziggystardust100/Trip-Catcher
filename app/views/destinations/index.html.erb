@@ -1,4 +1,6 @@
 <br>
+<div class="container">
+ <h2 class="landing-page-titles" style="text-align: center">Destinations</h2>
 <div id = "map-style">
   <div
     id="map"
@@ -10,10 +12,9 @@
 </div>
 
 <div class="container">
- <h2 class="landing-page-titles" style="text-align: center">Destinations</h2>
   <div class="row">
     <% @destinations.each do |d| %>
-      <div class= "col-12 col-md-6 col-lg-4  py-4">
+      <div class= "col-12 col-md-6 col-lg-4 py-4">
         <%= link_to destination_path(d) do %>
           <div class="card-trip">
             <% unless d.pictures.blank?  %>
@@ -28,5 +29,5 @@
     <% end %>
   </div>
 </div>
-
+</div>
 

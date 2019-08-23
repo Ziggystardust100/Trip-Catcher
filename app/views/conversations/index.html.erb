@@ -1,10 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm">
+
+
+
+    <div class="col-sm-6">
+      <div class="conv-group">
       <div class= "mail">
       <h3>Mailbox</h3>
-
-
 
       <% @conversations.each do |conversation| %>
       <% if conversation.sender_id == current_catcher.id ||  conversation.reciever_id == current_catcher.id %>
@@ -13,33 +15,57 @@
       <% else %>
       <% reciever = Catcher.find(conversation.sender_id) %>
       <% end %>
-      <%= link_to reciever.user_name,   conversation_messages_path(conversation)%>
+      <%= link_to  conversation_messages_path(conversation) do%>
+      <div class="card-product">
+        <%= cl_image_tag reciever.pictures.last.photo, alt: "alttext" %>
+        <div class="card-product-infos">
+          <h2><%=reciever.user_name %></h2>
+          <p>Check my messages</p>
+        </div>
+      </div>
+
+
+
       <% end %>
       <% end %>
+      <% end %>
+
       </div>
     </div>
-  </div>
+</div>
 
 
 
-  <div class="row">
-    <div class="col-sm">
+
+    <div class="col-sm-6">
+      <div class="conv-group">
       <div class="friend">
-      <h3>All catchers</h3>
+      <h3>My friends</h3>
 
 
 
       <% @catchers.each do |catcher| %>
+
       <% if catcher.id != current_catcher.id %>
-      <div>
-      <%= catcher.user_name %> <%= link_to "Message me!", conversations_path(sender_id: current_catcher.id, reciever_id: catcher.id), method: 'post'%>
+        <div>
+
+        <div class="card-product">
+          <%= cl_image_tag catcher.pictures.first.photo, alt: "alttext" %>
+            <div class="card-product-infos">
+            <h2><%= catcher.user_name %> </h2>
+            <p> <%= link_to "Message me!", conversations_path(sender_id: current_catcher.id, reciever_id: catcher.id), method: 'post'%></p>
+          </div>
+        </div>
+
       </div>
     <% end %>
-   <% end %>
+    <% end %>
    </div>
   </div>
 
 
 
   </div>
+</div>
+
 </div>
