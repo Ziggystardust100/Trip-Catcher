@@ -9,7 +9,7 @@ class Catcher < ApplicationRecord
   has_many :stories
   has_many :pictures, dependent: :destroy
   has_many :destinations, through: :favourites
-  has_many :trips, through: :invitations
+  has_many :trips
   has_many :conversations
 
 

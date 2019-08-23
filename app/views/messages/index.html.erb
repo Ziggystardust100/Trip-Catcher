@@ -33,14 +33,12 @@
     <% end %>
   <% end %>
 </div>
-<div class="container">
-  <%= simple_form_for [@conversation, @message] do |f| %>
-       <%= f.input :content, label: false%>
-        <%= f.input :catcher_id, :input_html => { :value => current_catcher.id }, as: :hidden %>
-       <%= f.submit 'Add Reply', class: 'btn btn-warning btn-block'%>
-  <% end %>
-</div>
-
-
-
-
+<%= form_for [@conversation, @message] do |f| %>
+ <div>
+   <%= f.text_area :content%>
+ </div>
+ <%= f.text_field :catcher_id, value: current_catcher.id, type: :hidden %>
+ <div>
+   <%= f.submit 'Add Reply'%>
+ </div>
+<% end %>
