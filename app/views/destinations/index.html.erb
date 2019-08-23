@@ -14,7 +14,7 @@
 <div class="container">
   <div class="row">
     <% @destinations.each do |d| %>
-      <div class= "col-12 col-md-6 col-lg-4  py-4">
+      <div class= "col-12 col-md-6 col-lg-4 py-4">
         <%= link_to destination_path(d) do %>
           <div class="card-trip">
             <% unless d.pictures.blank?  %>

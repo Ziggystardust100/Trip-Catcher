@@ -1,12 +1,8 @@
-
 .card-trip-show-u{
-
-
-
   position : relative;
-  height: 900px;
-  width: 900px;
-  margin : 100py auto;
+  min-height: 500px;
+  max-width: 900px;
+  margin : 0 auto;
   background-color : #FFF;
   -webkit-box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
@@ -14,49 +10,45 @@
     overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-
   .story-img{
     height: 500px;
     width:100%;
     border-radius:5px;
     object-fit: cover;
   }
-
-  p{
+  p {
     text-align: left;
     font-size: 15px;
     opacity: .7;
     margin: 10px;
   }
-  h3{
+  h3 {
     text-align: left;
   }
-
-  .separator{
+  .card-trip-infos {
+    margin-top: 30px;
+  }
+  .separator {
     margin-top : 10px;
     border : 1px solid #C3C3C3;
   }
-
-  .story-content{
+  .story-content {
     margin-top: 25px;
     margin:10px;
   }
-
-
-  .absolute{
-  position: absolute;
-  top:485px;
-  right:10px;
-  z-index: 2;
-  border-radius: 5px;
+  .absolute {
+    position: absolute;
+    top:485px;
+    right:10px;
+    z-index: 2;
+    border-radius: 5px;
+  }
+  .delete {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+  }
 }
-.delete{
-  position: absolute;
-  bottom: 8px;
-  right: 16px;
-}
-}
-
 // .new-story{
 //  justify-content: flex-end;
 
