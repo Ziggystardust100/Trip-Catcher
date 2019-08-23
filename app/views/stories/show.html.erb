@@ -16,6 +16,9 @@
     </div>
 
       <%= link_to "Edit your story", edit_story_path(@story), class: "btn btn-info mb-2 absolute"%>
+  <% if policy(@story).update? %>
+    <%= link_to "Edit your story", edit_story_path(@story), class: "btn btn-info mb-2 absolute"%>
+  <% end %>
 
     <br>
     <% if policy(@story).destroy? %>
