@@ -8,8 +8,7 @@
   display:flex;
   justify-content:space-between;
 }
-
-#icon{
+#icon {
   margin-left: auto;
   i{
     background-color:  #af593a;
@@ -19,16 +18,41 @@
     color: white;
     padding: 10px;
   }
-}
-.ava{
+.ava {
   display:flex;
   justify-content:space-around;
 }
-#feather-greay{
+#feather-greay {
   color: #ffbd9e;
+  position: relative;
 }
-.small{
+.small {
   font-size: 1rem;
 }
+}
+.destshow {
+  background-color : #FFF;
+  -webkit-box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 93px 0px rgba(0,0,0,0.75);
+  margin : 0 auto;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  min-height: 500px;
+  max-width: 1000px;
+  }
+
+  .backbtn {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+  }
+.border-right {
+  border-right: 1px solid;
+}
+
+
 
 
