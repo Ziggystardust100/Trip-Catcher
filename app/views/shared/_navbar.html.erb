@@ -19,6 +19,9 @@
         <li class="nav-item">
           <%= link_to "Stories", stories_path, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "Trips", trips_path, class: "nav-link" %>
+        </li>
         <li class="nav-item dropdown">
           <% if current_catcher.pictures.empty? %>
             <%= image_tag 'sheep.jpg', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

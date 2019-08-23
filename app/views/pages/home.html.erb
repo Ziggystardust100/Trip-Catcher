@@ -11,16 +11,17 @@
           %>
           <%= submit_tag "Go", class: "btn btn-warning" %>
         </div>
+
       <% end %>
   </div>
 </div>
 <br>
 <div class="container-fluid cards">
-  <h2 > <span class="landing-page-titles">Destinations</span></h2>
+  <h2 ><%= link_to "Destinations", destinations_path, class: "landing-page-titles" %></h2>
   <br>
   <div class="row">
     <% @destinations.first(3).each do |d| %>
-      <div class="col-4 mb-3">
+      <div class="col-lg-4 col-sm-6 mb-3">
         <%= link_to destination_path(d) do %>
           <div class="card-trip">
             <% unless d.pictures.blank?  %>
@@ -39,11 +40,11 @@
 </div>
 <br>
 <div class="container-fluid cards">
-  <h2 ><span class="landing-page-titles">Catchers</span></h2>
+  <h2 ><%= link_to "Catchers", catchers_path, class: "landing-page-titles" %></h2>
   <br>
   <div class="row">
     <% @catchers.first(3).each do |c| %>
-      <div class="col-4 mb-3">
+      <div class="col-lg-4 col-sm-6 mb-3">
         <%= link_to catcher_path(c) do %>
           <div class="card-trip">
             <% unless c.pictures.blank?  %>
@@ -62,11 +63,11 @@
 </div>
 <br>
 <div class="container-fluid cards">
-  <h2 ><span class="landing-page-titles">Stories</span></h2>
+  <h2 ><%= link_to "Stories", stories_path, class: "landing-page-titles" %></h2>
   <br>
   <div class="row">
     <% @stories.first(3).each do |s| %>
-      <div class="col-4 mb-3">
+      <div class="col-lg-4 col-sm-6 mb-3">
         <%= link_to stories_path(s) do %>
           <div class="card-trip">
             <% unless s.pictures.blank?  %>
