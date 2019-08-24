@@ -23,6 +23,7 @@ class TripsController < ApplicationController
     @destination = Destination.find(params[:destination_id])
     @trip.destination = @destination
     @trip.catcher = current_catcher
+    @trip.status = 'Open'
     authorize @trip
     if @trip.save
       redirect_to trip_path(@trip)
@@ -41,7 +42,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:start_date, :end_date, :description)
+    params.require(:trip).permit(:start_date, :end_date, :description, :max_catchers)
   end
 
 end
