@@ -16,9 +16,11 @@
 </div>
 
 <div class="container">
+  <% if (@trip.max_catchers || 6)  >= @trip.invitations.count%>
   <%= simple_form_for [@trip, @invitation] do |f| %>
   <%=  f.input :catcher_id, collection: current_catcher.friends.map {|f| [f.id, f.user_name] unless f == @trip.catcher}.compact, label_method: :second, value_method: :first  %>
   <%= f.submit %>
+  <% end %>
   <% end %>
 </div>
 <div class="container">

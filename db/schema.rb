@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_23_113539) do
+ActiveRecord::Schema.define(version: 2019_08_24_121120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 2019_08_23_113539) do
     t.text "description"
     t.string "status"
     t.bigint "catcher_id"
+    t.integer "max_catchers"
     t.index ["catcher_id"], name: "index_trips_on_catcher_id"
     t.index ["destination_id"], name: "index_trips_on_destination_id"
   end
