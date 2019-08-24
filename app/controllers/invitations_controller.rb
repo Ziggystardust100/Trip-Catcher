@@ -5,11 +5,22 @@ class InvitationsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @invitation.trip = @trip
     authorize @invitation
-    if @invitation.save
-      redirect_to trip_path(@trip)
+    if @trip.status == 'Open'
+      if @invitation.save
+
+          if @trip.max_catchers == @trip.invitations.count
+          @trip.status = 'Full'
+          @trip.save
+          end
+
+        redirect_to trip_path(@trip)
+      else
+        flash[:error] = 'Something went wrong'
+        render 'trips/show'
+      end
     else
-      flash[:error] = 'Something went wrong'
-      render 'trips/show'
+        flash[:error] = 'Something went wrong'
+        render 'trips/show'
     end
   end
 
@@ -18,8 +29,13 @@ class InvitationsController < ApplicationController
     authorize @invitation
     @trip = @invitation.trip
     @invitation.destroy
-
+    @trip.status = 'Open'
+    @trip.save
     redirect_to trip_path(@trip)
+
+
+
+
   end
   def update
     @invitation = Invitation.find(params[:id])
