@@ -35,8 +35,10 @@ class MessagesController < ApplicationController
         authorize @message
     if @message.save
       ActionCable.server.broadcast "conversation_#{@conversation.id}",
-                                  id: @conversation.id,
-                                  message: render_message(@message)
+        id: @conversation.id,
+        message: @message.to_json,
+        catcher_username: @message.catcher.user_name,
+        message_time: @message.message_time
 
     end
 
@@ -48,8 +50,8 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:content, :catcher_id)
    end
 
-   def render_message(message)
-    render( partial: 'message', locals: {message: message})
-  end
+  #  def render_message(message, is_current_catcher)
+  #   render( partial: 'message', locals: {message: message, is_current_catcher: is_current_catcher})
+  # end
 
 end

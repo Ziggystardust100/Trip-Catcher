@@ -8,7 +8,7 @@
 
 </div>
 
-<div class="container message-container" id='messages' data-id='<%= @conversation.id  %>'>
+<div class="container message-container" id='messages' data-id='<%= @conversation.id  %>' data-catcher-id='<%= current_catcher.id %>'>
   <% if @over_ten %>
   <div class="text-center">
       <%= link_to 'Show Previous', '?m=all', class: 'btn btn-warning btn-rounded btn-sm mb-3' %>
@@ -17,7 +17,7 @@
   <% end %>
   <% @messages.each do |message| %>
     <% if message.content %>
-        <%= render 'messages/message', message: message %>
+        <%= render 'messages/message', message: message, is_current_catcher: message.catcher == current_catcher %>
       <% end %>
   <% end %>
 </div>
