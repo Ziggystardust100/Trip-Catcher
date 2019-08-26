@@ -1,5 +1,7 @@
 <div class="card-product">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <% unless destination.pictures.empty? %>
+  <%= cl_image_tag (destination.pictures.first.photo) %>
+  <% end %>
   <div class="card-product-infos">
     <h2><%=destination.location %></h2>
     <p><%=destination.description %></p>

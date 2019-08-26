@@ -35,9 +35,21 @@ justify-content: center;
 }
 .txt-show {
 text-color: black;
-background-color: #CB6B16;
-border-radius: 5px;
 }
  .profile-text h4 {
   margin-bottom: 20px;
+ }
+ tr{
+    display: table-row;
+    white-space: nowrap;
+    font-size: 0.8em;
+    padding: 16px 16px 16px 0;
+    height: 72px;
+    font-size: 1.5rem;
+    font-family: "Raleway", "Helvetica", "sans-serif";
+    font-weight: 500;
+
+    .td-right{
+      text-align: right;
+    }
  }

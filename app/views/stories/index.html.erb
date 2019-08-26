@@ -5,7 +5,10 @@
 <br>
   <div class="row">
     <% @stories.each do |s| %>
-      <div class="col-12 col-md-6 col-lg-4 mb-3 ">
+
+
+      <div class="col-12 col-md-6 col-lg-4 py 5px ">
+
       <%= link_to story_path(s) do %>
         <div class="card-category" style='
         background-image: url("<%= cl_image_path s.pictures.first.photo, height: 800, width: 800, crop: :fill  unless s.pictures.blank?%>")
@@ -16,6 +19,7 @@
               <h2><% s.rating.times do%>
                <i class="fas fa-feather-alt small"></i>
               <% end %></h2>
+              <h5>by <%= s.catcher.user_name %> </h5>
             </div>
           </div>
         </div>
@@ -26,6 +30,6 @@
   <div class = "row new-story">
      <%= link_to "Tell a new Story",   new_story_path, class: "btn btn-warning btn-lg  m-3"%>
   </div>
-</div>
+
 
 
