@@ -4,12 +4,11 @@ class TripsController < ApplicationController
     @trips = policy_scope(Trip)
   end
 
-
-
   def show
     @trip = Trip.find(params[:id])
     authorize @trip
     @invitation = Invitation.new
+    @tripchat = Tripchat.new
   end
 
   def new
@@ -55,7 +54,6 @@ class TripsController < ApplicationController
         @trip.status = 'Open'
       end
         @trip.save
-
       redirect_to trip_path(@trip)
     else
       render :edit

@@ -3,6 +3,7 @@ class Trip < ApplicationRecord
   belongs_to :catcher
   has_many :invitations, dependent: :destroy
   has_many :catchers, through: :invitations
+  has_many :tripchats
   validates_presence_of :start_date, :end_date, :catcher_id, :max_catchers
   validate :trip_is_possible?
 
