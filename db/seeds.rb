@@ -27,12 +27,6 @@ hanoi = Destination.create!(location: 'Hanoi', description: 'cosmo',price: 700, 
 # Create Favorites
 favourites = Favourite.create!(catcher_id: jd.id, destination_id:marrakech.id)
 
-# Create Trips
-trips = Trip.create!(destination_id: marrakech.id, start_date: Date.today, end_date: (Date.today + 5))
-
-# Create Invitations
-invitations = Invitation.create!(catcher_id: jd.id, trip_id: trips.id, joined: true)
-
 # Destination pics
 urlmarr = "https://i.pinimg.com/564x/b6/16/be/b616be22c50159e06661ca71a88f6f3c.jpg"
 picmarr = Picture.new(destination_id: marrakech.id)
