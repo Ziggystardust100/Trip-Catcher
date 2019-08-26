@@ -1,0 +1,13 @@
+
+<div class="container">
+  <br>
+  <h1>My Trip </h1>
+  <%= simple_form_for @trip  do |f| %>
+    <%= f.input :description %>
+    <%= f.input :max_catchers,  collection: (1..6) %>
+    <%= f.input :start_date, as: :date, html5: true , input_html: {min: Date.today }%>
+    <%= f.input :end_date, as: :date, html5: true, input_html: {min: Date.today } %>
+    <%= f.submit %>
+  <% end %>
+  <hr>
+</div>

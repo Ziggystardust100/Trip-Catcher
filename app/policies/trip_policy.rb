@@ -5,6 +5,10 @@ class TripPolicy < ApplicationPolicy
     end
  end
 
+  def update?
+    record.catcher == user && record.status == "Open"
+  end
+
   def show?
   true
   end

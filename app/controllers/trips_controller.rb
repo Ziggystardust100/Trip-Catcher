@@ -39,6 +39,29 @@ class TripsController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @trip = Trip.find(params[:id])
+    @destination = @trip.destination
+    authorize @trip
+  end
+
+  def update
+    @trip = Trip.find(params[:id])
+    authorize @trip
+    if @trip.update(trip_params)
+      if @trip.max_catchers == @trip.invitations.count
+        @trip.status = 'Full'
+      else
+        @trip.status = 'Open'
+      end
+        @trip.save
+
+      redirect_to trip_path(@trip)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def trip_params

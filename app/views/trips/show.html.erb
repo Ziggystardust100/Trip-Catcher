@@ -25,6 +25,11 @@
   <% end %>
   <% end %>
 </div>
+  <div>
+      <% if policy(@trip).update? %>
+        <%= link_to "Edit your trip", edit_trip_path(@trip), class: "btn btn-info mb-2 absolute"%>
+      <% end %>
+  </div>
 <div class="container">
 <% @trip.invitations.each do |f| %>
 <p>
