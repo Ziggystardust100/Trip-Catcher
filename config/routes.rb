@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-    require "sidekiq/web"
-  authenticate :user, lambda { |u| u.admin } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
+
   devise_for :catchers
   root to: 'pages#home'
   resources :destinations, only: [:index,:show]  do
@@ -24,8 +21,9 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:show, :edit, :update, :index, :destroy] do
     resources :invitations, only: [:create]
+    resources :tripchats, only: [:create]
   end
 
   resources :invitations, only: [:destroy, :update]
-
+  resources :tripchats, only: [:destroy]
 end

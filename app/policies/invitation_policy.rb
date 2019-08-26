@@ -8,7 +8,8 @@ class InvitationPolicy < ApplicationPolicy
   end
 
  def destroy?
-    true
+      record.catcher == user
+
  end
 
  def update?

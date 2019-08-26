@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_24_141900) do
+ActiveRecord::Schema.define(version: 2019_08_26_121024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,16 @@ ActiveRecord::Schema.define(version: 2019_08_24_141900) do
     t.index ["destination_id"], name: "index_stories_on_destination_id"
   end
 
+  create_table "tripchats", force: :cascade do |t|
+    t.text "content"
+    t.bigint "catcher_id"
+    t.bigint "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["catcher_id"], name: "index_tripchats_on_catcher_id"
+    t.index ["trip_id"], name: "index_tripchats_on_trip_id"
+  end
+
   create_table "trips", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
@@ -154,6 +164,8 @@ ActiveRecord::Schema.define(version: 2019_08_24_141900) do
   add_foreign_key "pictures", "stories"
   add_foreign_key "stories", "catchers"
   add_foreign_key "stories", "destinations"
+  add_foreign_key "tripchats", "catchers"
+  add_foreign_key "tripchats", "trips"
   add_foreign_key "trips", "catchers"
   add_foreign_key "trips", "destinations"
 end
