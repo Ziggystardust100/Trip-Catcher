@@ -1,162 +1,186 @@
-<div class="card-trip-show-u">
-  <div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-5">
-            <div class="profile-center">
-                <% unless @catcher.pictures.empty? %>
-                <%= cl_image_tag @catcher.pictures.first.photo, class: 'profile-image'%>
-                <% end %>
-            </div>
-        </div>
-        <div class="col-12 col-md-7">
-            <div class="container show-cnt">
-                <div class="profile-text">
-                    <h3 class="card-title ">
-                        <%= @catcher.user_name %>
-                    </h3>
-                    <hr>
-                    <% if current_catcher == @catcher %>
-                    <%= link_to 'Edit', edit_catcher_path(@catcher), class: "btn btn-warning", id: 'edit-catcher' %>
+        <div class="col-12 col-md-3">
+            <div class="card-profile">
+                <div class="profile-center">
+                    <% unless @catcher.pictures.empty? %>
+                    <%= cl_image_tag @catcher.pictures.first.photo, class: 'profile-image'%>
                     <% end %>
-                    <table>
-                        <tr>
-                            <td><span class='txt-show'>Gender:</span></td>
-                            <td class="td-right">
-                                <%= @catcher.gender %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span class='txt-show'>Occupation:</span></td>
-                            <td class="td-right">
-                                <%= @catcher.occupation %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span class='txt-show'>Hobbies: </span> </td>
-                            <td class="td-right">
-                                <%= @catcher.hobbies %>
-                            </td>
-                        </tr>
-                    </table>
-                    <hr>
+                </div>
+                <div class="container show-cnt">
+                    <div class="profile-text">
+                        <h3 class="card-title ">
+                            <%= @catcher.user_name %>
+                        </h3>
+                        <hr>
+                        <% if current_catcher == @catcher %>
+                        <%= link_to 'Edit', edit_catcher_path(@catcher), class: "btn btn-warning", id: 'edit-catcher' %>
+                        <% end %>
+                        <table>
+                            <tr>
+                                <td><span class='txt-show'><i class="fas fa-venus-mars"></i> </span></td>
+                                <td class="td-right">
+                                    <%= @catcher.gender %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class='txt-show'><i class="fas fa-briefcase"></i> </span></td>
+                                <td class="td-right">
+                                    <%= @catcher.occupation %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class='txt-show'><i class="fas fa-smile"></i> </span> </td>
+                                <td class="td-right">
+                                    <%= @catcher.hobbies %>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <%= link_to "Back", catchers_path, class: "btn btn-warning my-3 btn-block" %>
+        </div>
+        <div class="col-12 col-md-9">
+            <div class="container">
+                <div class="row mb-3">
+                    <div class="col-12 col-md-6">
+                        <div class="card-profile h-100">
+                            <h4><span class='txt-show'>Favourite destinations:</span></h4>
+                            <hr>
+                            <%@catcher.favourites.each do |favourite| %>
+                            <p class="to-the-line-profile"><i class="fas fa-globe-europe"></i></i>
+                                <%= favourite.destination.location %>
+                            </p>
+                            <%end %>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="card-profile h-100">
+                            <h4> <span class='txt-show'>Visited places: </span></h4>
+                            <hr>
+                            <p class="to-the-line-profile">
+                                <%= @catcher.past_destinations %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="card-profile h-100">
+                            <h4 class="description p-2">About me:</h4>
+                            <hr>
+                            <p class="p-2">
+                                <%= @catcher.description%>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="card-profile h-100">
+                            <h4> <span class='txt-show'> Friends: </span> </h4>
+                            <hr>
+                            <% @catcher.friends.each do |friend| %>
+                            <% unless friend.pictures.empty? %>
+                            <%= cl_image_tag friend.pictures.first.photo , class: 'avatar-square'%>
+                            <% else %>
+                            <%= image_tag "sheep.jpg", class: 'avatar-square'%>
+                            <% end %>
+                            <p>
+                                <%= friend.user_name %>
+                                <% if current_catcher == @catcher %>
+                                <%= link_to '', friend_path(friend), method: 'delete',class: "fas fa-trash" %>
+                                <%end%>
+                            </p>
+                            <%end%>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 ">
+                    <div class="col-12 col-md-6">
+                        <div class="card-profile h-100">
+                            <% if current_catcher == @catcher %>
+                            <h4>Outgoing</h4>
+                            <hr>
+                            <% @catcher.friend_requests.each do |fr|%>
+
+                            <% unless fr.friend.pictures.empty? %>
+                            <%= cl_image_tag fr.friend.pictures.first.photo , class: 'avatar-square'%>
+                            <% else %>
+                            <%= image_tag "sheep.jpg", class: 'avatar-square'%>
+                            <% end %>
+                            <p>
+                                <%= fr.friend.user_name %>
+                            </p>
+                            <%= link_to 'Cancel Friend Request', friend_request_path(fr), method: 'delete',class: 'btn btn-danger btn-sm' %>
+                            <br>
+                            <% end %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="card-profile h-100">
+                            <% if current_catcher == @catcher %>
+                            <h4>Incoming</h4>
+                            <hr>
+                            <% FriendRequest.where(friend: @catcher).each do |fr|%>
+
+                            <%= cl_image_tag fr.catcher.pictures.first.photo , class:'avatar-square'%>
+                            <p>
+                                <%= fr.catcher.user_name %>
+                            </p>
+                            <%= link_to 'Accept Friend', friend_request_path(fr), method: 'patch',class: 'btn btn-warning btn-sm ' %>
+                            <%= link_to 'Ignore Friend', friend_request_path(fr), method: 'delete',class: 'btn btn-danger btn-sm' %>
+                            <% end %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12 col-md-6">
+                        <div class="card-profile h-100">
+                            <h4>Invitations Recieved</h4>
+                            <hr>
+                            <% Invitation.where(catcher: @catcher).each do |f|%>
+                            <p> Sent by
+                                <%= f.trip.catcher.user_name %>
+                            </p>
+                            <p>
+                                <%= f.trip.destination.location %>
+                            </p>
+                            <p>
+                                <%= f.trip.start_date %>
+                            </p>
+                            <p>
+                                <%= f.trip.end_date %>
+                            </p>
+                            <% unless f.joined %>
+                            <%= link_to 'Accept Invitation', invitation_path(f), method: 'patch',class: 'btn btn-warning ' %>
+                            <% end %>
+                            <%= link_to 'Decline Invitation', invitation_path(f), method: 'delete',class: 'btn btn-danger ' %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="card-profile h-100">
+                            <h4>Invitations Sent</h4>
+                            <hr>
+                            <% @catcher.trips.each do |trip|  %>
+                            <p> </p>
+                            <p>
+                                <%= trip.destination.location  %>
+                            </p>
+                            <% trip.invitations.each do |invitation| %>
+                            <p>
+                                <%= invitation.catcher.user_name %>
+                            </p>
+                            <% end %>
+                            <% end %>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 col-md-6">
-            <h4><span class='txt-show'>Favourite destinations:</span>
-                <%@catcher.favourites.each do |favourite| %>
-                <h4 class="to-the-line-profile"><i class="fas fa-globe-europe"></i></i>
-                    <%= favourite.destination.location %>
-                </h4>
-                <%end %>
-            </h4>
-        </div>
-        <div class="col-12 col-md-6">
-            <h4> <span class='txt-show'>Visited places: </span>
-                <h4 class="to-the-line-profile">
-                    <%= @catcher.past_destinations %>
-                </h4>
-            </h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <hr>
-            <h4 class="description p-2">About me:</h4>
-            <h5 class="to-the-line-profile p-2">
-                <%= @catcher.description%>
-            </h5>
-            <hr>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <h4> <span class='txt-show'> Friends: </span> </h4>
-            <% @catcher.friends.each do |friend| %>
-            <h4>
-                <%= friend.user_name %>
-            </h4>
-            <% if current_catcher == @catcher %>
-            <%= link_to 'delete Friend', friend_path(friend), method: 'delete',class: 'btn btn-danger ' %>
-            <%end%>
-            <%end%>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-md-6">
-            <% if current_catcher == @catcher %>
-            <h1>Outgoing</h1>
-            <% @catcher.friend_requests.each do |fr|%>
-            <h4>
-                <%= fr.friend.user_name %>
-            </h4>
-            <% unless fr.friend.pictures.empty? %>
-            <%= cl_image_tag fr.friend.pictures.first.photo , class:'b'%>
-            <% else %>
-            <%= image_tag "sheep.jpg", class:'b'%>
-            <% end %>
-            <%= link_to 'Cancel Friend Request', friend_request_path(fr), method: 'delete',class: 'btn btn-danger ' %>
-            <% end %>
-            <% end %>
-        </div>
-        <div class="col-12 col-md-6">
-            <% if current_catcher == @catcher %>
-            <h1>Incoming</h1>
-            <% FriendRequest.where(friend: @catcher).each do |fr|%>
-            <h4>
-                <%= fr.catcher.user_name %>
-            </h4>
-            <%= cl_image_tag fr.catcher.pictures.first.photo , class:'b'%>
-            <%= link_to 'Accept Friend', friend_request_path(fr), method: 'patch',class: 'btn btn-warning ' %>
-            <%= link_to 'Ignore Friend', friend_request_path(fr), method: 'delete',class: 'btn btn-danger ' %>
-            <% end %>
-            <% end %>
-        </div>
-    </div>
-
-    <div class="row s profile-card  mt-2">
-      <div class="col-md-6">
-        <h1>Invitations Recieved</h1>
-        <% Invitation.where(catcher: @catcher).each do |f|%>
-        <p>  Sent by<%= f.trip.catcher.user_name %> </p>
-        <p><%= f.trip.destination.location %></p>
-        <p><%= f.trip.start_date %></p>
-        <p><%= f.trip.end_date %></p>
-        <% unless f.joined %>
-        <%= link_to 'Accept Invitation', invitation_path(f), method: 'patch',class: 'btn btn-warning ' %>
-        <% end %>
-        <%= link_to 'Decline Invitation', invitation_path(f), method: 'delete',class: 'btn btn-danger ' %>
-        <% end %>
-
-
-
-
-      </div>
-      <div class="col-md-6">
-        <h1>Invitations Sent</h1>
-        <% @catcher.trips.each do |trip|  %>
-        <p>  </p>
-        <p> <%= trip.destination.location  %> </p>
-        <% trip.invitations.each do |invitation| %>
-        <p> <%= invitation.catcher.user_name %> </p>
-        <% end %>
-        <% end %>
-      </div>
-    </div>
-
-
-
-</div>
-
-<br>
-
-
-
-
-
-
-<%= link_to "Go back", catchers_path, class: "btn btn-warning", id: 'go-back'  %>
-</div>
 </div>
