@@ -16,6 +16,7 @@
         <br>
         <%= @story.content %></p>
     </div>
+    <%= link_to "Back", stories_path, class: "btn btn-info m-3"%>
 
   <% if policy(@story).update? %>
     <%= link_to "Edit your story", edit_story_path(@story), class: "btn btn-info mb-2 absolute"%>

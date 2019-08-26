@@ -32,11 +32,11 @@
           <% if catcher_signed_in? %>
           <% if Favourite.where(destination: @destination, catcher: current_catcher).blank? %>
             <%= link_to destination_favourites_path(@destination), method: :post  do%>
-            <i class="fas fa-feather-alt"></i>
+            <p>Favourite  <i class="fas fa-feather-alt"></i></p>
             <% end %>
           <% else %>
             <%= link_to favourite_path(Favourite.where(destination: @destination, catcher: current_catcher).first), method: :delete  do%>
-              <i class="fas fa-trash" id="feather-greay"></i>
+             <p>Remove  <i class="fas fa-feather-alt" id="feather-greay"></i></p>
               <% end %>
             <% end %>
           <% end %>
@@ -64,8 +64,6 @@
                 <% end %>
               <% end %>
             <% end %>
-             <div class="backbtn">  <%= link_to "Back", destinations_path, class: "btn btn-info m-3"%>
-              </div>
           </div>
         </div>
       </div>
