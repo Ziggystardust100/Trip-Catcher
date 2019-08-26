@@ -1,11 +1,22 @@
 <div class="container">
   <br>
-  <h1>New Trip </h1>
-  <%= simple_form_for @trip do |f| %>
-    <%= f.association :destination, label_method: :location %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.submit class: 'btn btn-warning btn-block' %>
+  <h1>New Trip for <%= @destination.location %></h1>
+    <h2>Proposed by:</h2>
+      <div >
+
+        <%= @current_catcher.user_name %>
+          <% unless @current_catcher.pictures.empty? %>
+            <%= cl_image_tag @current_catcher.pictures.first.photo, class: 'avatar'%>
+          <% end %>
+      </div>
+    <hr>
+    <%= simple_form_for [@destination, @trip]  do |f| %>
+    <%= f.input :description %>
+    <%= f.input :max_catchers,  collection: (1..6) %>
+    <%= f.input :start_date, as: :date, html5: true , input_html: {min: Date.today }%>
+    <%= f.input :end_date, as: :date, html5: true, input_html: {min: Date.today } %>
+
+
+    <%= f.submit %>
   <% end %>
-  <hr>
 </div>
