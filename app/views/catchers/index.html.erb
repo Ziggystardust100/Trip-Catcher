@@ -2,12 +2,11 @@
 <div class="container">
  <h2 class="landing-page-titles" style="text-align: center">Catchers</h2>
   <div class="row">
-<%@catchers.each do |catcher|%>
-
+<%@catchers.where.not(id: current_catcher.id).each do |catcher| %>
 <div class="col-sm-6 col-lg-4">
 <%= link_to catcher_path(catcher) do %>
 <div class="card s">
-  <h5 class="card-header"> <%=  catcher.user_name %> </h5>
+  <h5 class="card-header"><%= catcher.user_name %></h5>
   <div class="card-body">
     <div class=" card-body-wrap">
       <div>
@@ -17,7 +16,6 @@
 
           <% if !catcher.pending_friends.include?(current_catcher) && FriendRequest.where(friend: catcher, catcher: current_catcher).blank? && !catcher.friends.include?(current_catcher) && catcher != current_catcher%>
           <%= link_to 'Add friend', catcher_friend_requests_path(catcher), method: :post, class: 'btn btn-warning friend-btn' %>
-
           <% elsif !catcher.pending_friends.include?(current_catcher) && FriendRequest.where(friend: catcher, catcher: current_catcher).blank? && catcher != current_catcher%>
             <p class="card-text btn btn-success friend-btn">Friends</p>
 
