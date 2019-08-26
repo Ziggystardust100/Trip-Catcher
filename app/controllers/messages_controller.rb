@@ -34,8 +34,12 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.new(message_params)
         authorize @message
     if @message.save
-      redirect_to conversation_messages_path(@conversation)
+      ActionCable.server.broadcast "conversation_#{@conversation.id}",
+                                  id: @conversation.id,
+                                  message: render_message(@message)
+
     end
+
   end
 
   private
@@ -43,4 +47,9 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content, :catcher_id)
    end
+
+   def render_message(message)
+    render( partial: 'message', locals: {message: message})
+  end
+
 end

@@ -1,0 +1,13 @@
+      <% catcher = Catcher.find(message.catcher_id) %>
+       <div class="<%= catcher == current_catcher ? 'message-orange' : 'message-blue' %>">
+          <p class='message-content'>
+            <span><%= message.content %></span>
+          </p>
+         <div class="<%= catcher == current_catcher ? 'message-timestamp-right' : 'message-timestamp-left' %>">
+          <strong><%= catcher.user_name %></strong>
+          <%= message.message_time %>
+            <% if message.read  %>
+              <span><i class="fas fa-check"></i></span>
+             <% end %>
+          </div>
+        </div>

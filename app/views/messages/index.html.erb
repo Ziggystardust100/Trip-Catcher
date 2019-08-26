@@ -8,7 +8,7 @@
 
 </div>
 
-<div class="container message-container">
+<div class="container message-container" id='messages' data-id='<%= @conversation.id  %>'>
   <% if @over_ten %>
   <div class="text-center">
       <%= link_to 'Show Previous', '?m=all', class: 'btn btn-warning btn-rounded btn-sm mb-3' %>
@@ -17,23 +17,11 @@
   <% end %>
   <% @messages.each do |message| %>
     <% if message.content %>
-      <% catcher = Catcher.find(message.catcher_id) %>
-       <div class="<%= catcher == current_catcher ? 'message-orange' : 'message-blue' %>">
-          <p class='message-content'>
-            <span><%= message.content %></span>
-          </p>
-         <div class="<%= catcher == current_catcher ? 'message-timestamp-right' : 'message-timestamp-left' %>">
-          <strong><%= catcher.user_name %></strong>
-          <%= message.message_time %>
-            <% if message.read  %>
-              <span><i class="fas fa-check"></i></span>
-             <% end %>
-          </div>
-        </div>
-    <% end %>
+        <%= render 'messages/message', message: message %>
+      <% end %>
   <% end %>
 </div>
-<%= form_for [@conversation, @message] do |f| %>
+<%= form_for [@conversation, @message], remote: true do |f| %>
  <div>
    <%= f.text_area :content%>
  </div>
