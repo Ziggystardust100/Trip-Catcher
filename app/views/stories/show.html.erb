@@ -1,8 +1,11 @@
 <br>
 <div class="container">
   <div class="card-trip-show-u">
-  <% unless @story.pictures.blank?  %>
+  <% if @story.pictures.blank? %>
+  <%= image_tag 'journey.jpg', class: "story-img", height: 500, width: 600, crop: :fill %>
+  <% else %>
     <%= cl_image_tag @story.pictures.last.photo, class: 'story-img', height: 500, width: 600, crop: :fill %>
+
   <% end %>
     <div class="card-trip-infos m-3">
     <h3><%= @story.title %></h3>
@@ -30,3 +33,5 @@
   </div>
 </div>
 <br>
+
+
