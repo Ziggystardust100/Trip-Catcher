@@ -21,15 +21,12 @@ class FriendRequestsController < ApplicationController
   def destroy
     @friend_request.destroy
     redirect_to catcher_path(current_catcher)
-
-
   end
 
   def update
     @friend_request.accept
     redirect_to catcher_path(current_catcher)
   end
-
 
   private
 

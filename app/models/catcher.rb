@@ -11,13 +11,10 @@ class Catcher < ApplicationRecord
   has_many :destinations, through: :favourites
   has_many :trips
   has_many :conversations
-
-
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
   has_many :friend_requests, dependent: :destroy
   has_many :pending_friends, through: :friend_requests, source: :friend
-
 
   accepts_nested_attributes_for :pictures, allow_destroy: true
 

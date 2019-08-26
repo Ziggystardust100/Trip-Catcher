@@ -11,7 +11,6 @@
           %>
           <%= submit_tag "Go", class: "btn btn-warning" %>
         </div>
-
       <% end %>
   </div>
 </div>
@@ -29,8 +28,8 @@
            <% end %>
             <div class="card-trip-infos">
               <h2><%= d.location %></h2>
-              <p><%= d.description %></p>
-              <p><%= d.price %></p>
+              <p><strong><%= d.price %></strong> <i class="fas fa-euro-sign"></i></p>
+
             </div>
           </div>
         <% end %>

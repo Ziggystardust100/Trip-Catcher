@@ -5,11 +5,12 @@ Rails.application.routes.draw do
     resources :favourites, only: [:create]
     resources :trips, only: [:create, :new]
   end
+
   resources :catchers, only: [:edit, :index, :show, :update] do
     resources :friend_requests, only: [:create]
   end
-  resources :friend_requests, only: [:index, :update, :destroy]
 
+  resources :friend_requests, only: [:index, :update, :destroy]
   resources :stories, only: [:new, :create, :edit, :index, :show, :update, :destroy]
   resources :favourites, only: [:destroy]
   resources :friends, only: [:destroy, :index]
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
   resources :trips, only: [:show, :edit, :update, :index, :destroy] do
     resources :invitations, only: [:create]
   end
+
   resources :invitations, only: [:destroy, :update]
 
 end
