@@ -66,7 +66,7 @@
             </div>
             <div class="trip-chats">
                 <h2 class='trip-titles'>Chat Now</h2>
-                <div class="chat-content">
+                <div class="chat-content" id='trip-msg' data-catcher-id='<%= current_catcher.id %>' data-trip-id= '<%= @trip.id  %>'>
                     <% @trip.tripchats.each do |f| %>
                      <div class="<%= f.catcher == current_catcher ? 'message-orange' : 'message-blue' %>">
                         <div class='message-content'>
@@ -75,8 +75,8 @@
                       </div>
                     <% end %>
                 </div>
-                <%= simple_form_for [@trip, @tripchat] do |f|%>
-                <%= f.input :content %>
+                <%= simple_form_for [@trip, @tripchat], remote: true do |f|%>
+                <%= f.input :content, input_html: {onkeydown: 'if(event.keyCode === 13) {this.form.submit()}'} %>
                 <%= f.submit 'Add message', class: 'btn btn-warning' %>
                 <% end %>
                 <br>
