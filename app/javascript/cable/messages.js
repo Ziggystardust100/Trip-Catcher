@@ -10,6 +10,7 @@ if (messages) {
     received({message, catcher_username, message_time}) {
       messages.insertAdjacentHTML('beforeend', htmlToInsert(message, catcher_username, message_time))
       input.value = ''
+      messages.scrollTop = messages.scrollHeight
 
     }
   });
