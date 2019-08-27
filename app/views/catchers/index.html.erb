@@ -1,40 +1,37 @@
-<br>
 <div class="container">
- <h2 class="landing-page-titles" style="text-align: center">Catchers</h2>
-  <div class="row">
-<%@catchers.where.not(id: current_catcher.id).each do |catcher| %>
-<div class="col-sm-6 col-lg-4">
-<%= link_to catcher_path(catcher) do %>
-<div class="card s">
-  <h5 class="card-header"><%= catcher.user_name %></h5>
-  <div class="card-body">
-    <div class=" card-body-wrap">
-      <div>
-          <p class="card-text"><%= catcher.gender %></p>
-          <p class="card-text"><%= catcher.birth_date %></p>
-          <p class="card-text"><%= catcher.occupation %></p>
-
-          <% if !catcher.pending_friends.include?(current_catcher) && FriendRequest.where(friend: catcher, catcher: current_catcher).blank? && !catcher.friends.include?(current_catcher) && catcher != current_catcher%>
-          <%= link_to 'Add friend', catcher_friend_requests_path(catcher), method: :post, class: 'btn btn-warning friend-btn' %>
-          <% elsif !catcher.pending_friends.include?(current_catcher) && FriendRequest.where(friend: catcher, catcher: current_catcher).blank? && catcher != current_catcher%>
-            <p class="card-text btn btn-success friend-btn">Friends</p>
-
-          <% elsif !catcher.friends.include?(current_catcher) &&  catcher != current_catcher%>
-            <p class="card-text btn btn-danger friend-btn">Pending Request</p>
-          <% end %>
-
-
-      </div>
-        <% unless catcher.pictures.empty? %>
-      <div><%= cl_image_tag catcher.pictures.first.photo , class:'b'%></div>
-        <%end %>
-      </div>
-
-  </div>
+    <h2 class="landing-page-titles" style="text-align: center">Catchers</h2>
+    <div class="catcher-index-wrapper">
+        <div class="row">
+            <%@catchers.where.not(id: current_catcher.id).each do |catcher| %>
+            <div class="col-12 col-sm-6 col-md-4">
+                <%= link_to catcher_path(catcher) do %>
+                <div class="catcher-card ">
+                    <% unless catcher.pictures.empty? %>
+                    <%= cl_image_tag catcher.pictures.first.photo %>
+                    <% else %>
+                    <%= image_tag ("sheep.jpg") %>
+                    <%end %>
+                    <div class="catcher-card-infos">
+                        <p>
+                            <%= catcher.user_name %>
+                        </p>
+                        <% if catcher.gender == "man".downcase %>
+                        <i class="fas fa-mars"></i>
+                        <% else %>
+                        <i class="fas fa-venus"></i>
+                        <% end %>
+                        <% if !catcher.pending_friends.include?(current_catcher) && FriendRequest.where(friend: catcher, catcher: current_catcher).blank? && !catcher.friends.include?(current_catcher) && catcher != current_catcher%>
+                        <%= link_to 'Add friend', catcher_friend_requests_path(catcher), method: :post, class: 'btn btn-warning friend-btn btn-sm' %>
+                        <% elsif !catcher.pending_friends.include?(current_catcher) && FriendRequest.where(friend: catcher, catcher: current_catcher).blank? && catcher != current_catcher%>
+                        <p class="card-text btn btn-success friend-btn btn-sm">Friends</p>
+                        <% elsif !catcher.friends.include?(current_catcher) &&  catcher != current_catcher%>
+                        <p class="card-text btn btn-danger friend-btn btn-sm">Pending Request</p>
+                        <% end %>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <%end%>
+        </div>
+    </div>
 </div>
-<% end %>
-</div>
-<%end%>
-  </div>
-</div>
-
