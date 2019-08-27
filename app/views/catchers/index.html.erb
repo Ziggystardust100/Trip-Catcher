@@ -15,7 +15,7 @@
                         <p>
                             <%= catcher.user_name %>
                         </p>
-                        <% if catcher.gender == "man".downcase %>
+                        <% if catcher.gender.downcase == "man" %>
                         <i class="fas fa-mars"></i>
                         <% else %>
                         <i class="fas fa-venus"></i>
