@@ -8,8 +8,10 @@ class Trip < ApplicationRecord
   validate :trip_is_possible?
 
   def trip_is_possible?
-    if start_date > end_date
-      errors.add(:end_date, 'must be after the departure date')
+    unless start_date.nil? || end_date.nil?
+      if start_date > end_date
+        errors.add(:end_date, 'must be after the departure date')
+      end
     end
   end
 end

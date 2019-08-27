@@ -36,9 +36,8 @@ class StoriesController < ApplicationController
 
   def update
     @story = Story.find(params[:id])
-    @story.catcher = current_catcher
     authorize @story
-    if @story.save
+    if @story.update(story_params)
       unless params[:pics].nil?
         params[:pics]["photo"].each do |p|
           @story.pictures.create(photo: p)

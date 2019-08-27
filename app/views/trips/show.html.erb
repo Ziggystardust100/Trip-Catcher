@@ -1,85 +1,87 @@
 <br>
-<div class="container ">
-    <div class="trip-show-main">
-        <div class="top-trip-show">
-            <%= cl_image_tag @trip.destination.pictures.first.photo, class: 'story-img' %>
-            <div class="trip-infos m-3">
-                <%= @trip.destination.location %>
-                <p>Created by <strong>
-                        <%= @trip.catcher.user_name %></strong></p>
-                <h4> Status: <span class="<%= @trip.status == 'Open'? 'status-open' : @trip.status == 'Full'? 'status-full' : 'status-locked' %>">
-                        <%= @trip.status %> </span></h4>
-                <div class=" d-flex justify-content-between ">
-                    <p>From:
-                        <%= @trip.start_date %>
-                    </p>
-                    <p>From:
-                        <%= @trip.end_date %>
-                    </p>
-                    <% if policy(@trip).update? %>
-                    <%= link_to "Edit your trip", edit_trip_path(@trip), class: "btn btn-info mb-2 absolute"%>
-                    <% end %>
-                    <% if current_catcher == @trip.catcher %>
-                    <%= link_to trip_path(@trip), method: 'delete', class: 'card-link text-danger', data: {confirm: "Are you sure?"}  do %>
-                    <i class="fas fa-trash"></i> Delete
-                    <% end %>
-                    <% end %>
-                </div>
-            </div>
+<div class="container">
+  <div class="trip-show-main">
+    <div class="top-trip-show">
+      <%= cl_image_tag @trip.destination.pictures.first.photo, class: 'story-img' %>
+      <div class="trip-infos m-3">
+
+        <% if policy(@trip).update? %>
+          <%= link_to edit_trip_path(@trip), class: "btn btn-info mb-2 tripedit" do %><i class="fas fa-edit"></i>
+          <% end %>
+        <% end %>
+
+        <% if current_catcher == @trip.catcher %>
+          <%= link_to trip_path(@trip), method: 'delete', class: 'btn btn-info mb-2 tripdelete', data: {confirm: "Are you sure?"}  do %><i class="fas fa-trash"></i>
+          <% end %>
+        <% end %>
+
+      <div>
+       <h3><%= @trip.destination.location %></h3>
+       <p> From <%= @trip.start_date %></p>
+        <p> To <%= @trip.end_date %></p>
         </div>
-        <div class="trip-content">
+        <h4> Status: <span class="<%= @trip.status == 'Open'? 'status-open' : @trip.status == 'Full'? 'status-full' : 'status-locked' %>"><%= @trip.status %></span></h4>
+        <p>Created by <strong><%= @trip.catcher.user_name %></strong></p>
+      </div>
+
+      <div class="trip-desc"><p> <strong>Description:</strong>  <br> <%= @trip.description %></p></div>
+    </div>
+    <div class="trip-content">
+      <div class="spacer">
+        <div class="mask"></div><span><i></i></span>
+      </div>
+      <div class="trip-invitations">
+        <h2 class='trip-titles'>Invite Someone</h2>
+        <div class="d-flex justify-content-around">
+          <div style="width: 250px"> <% if (@trip.max_catchers || 6)  >= @trip.invitations.count %>
+          <%= simple_form_for [@trip, @invitation] do |f| %>
+            <%=  f.input :catcher_id, collection: current_catcher.friends.map {|f| [f.id, f.user_name] unless f == @trip.catcher}.compact, label_method: :second, value_method: :first  %>
+            <%= f.submit 'Invite Now', class: 'btn btn-warning' %>
+          <% end %>
+        <% end %>
+        </div>
+<div class="separator"></div>
+       <div>
+        <% @trip.invitations.each do |f| %>
+          <%=f.catcher.user_name  %>
+
+          <% unless f.catcher.pictures.empty? %>
+          <%= cl_image_tag f.catcher.pictures.first.photo , class:'avatar'%>
+          <% end %>
+          <% if policy(f).destroy? %>
+          <%= link_to  invitation_path(f),method: 'delete',class: 'text-danger mr-5' do %>
+          <i class='fas fa-trash'></i>
+          <% end %>
+          <% end %>
+          <%if f.joined %>
+          <p class='invit-status'>Accepted</p>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+       </div>
             <div class="spacer">
                 <div class="mask"></div>
                 <span><i></i></span>
             </div>
-            <div class="trip-invitations">
-                <h2 class='trip-titles'>Invite Someone</h2>
-                <% if (@trip.max_catchers || 6)  >= @trip.invitations.count %>
-                <%= simple_form_for [@trip, @invitation] do |f| %>
-                <%=  f.input :catcher_id, collection: current_catcher.friends.map {|f| [f.id, f.user_name] unless f == @trip.catcher}.compact, label_method: :second, value_method: :first  %>
-                <%= f.submit 'Invite Now', class: 'btn btn-warning' %>
-                <% end %>
-                <% end %>
-                <% @trip.invitations.each do |f| %>
-                <p>
-                    <%=f.catcher.user_name  %>
-                    <% unless f.catcher.pictures.empty? %>
-                    <%= cl_image_tag f.catcher.pictures.first.photo , class:'avatar'%>
-                    <% end %>
-                    <% if policy(@invitation).destroy? %>
-                    <%= link_to 'Delete Invitation', invitation_path(f),method: 'delete',class: 'btn btn-danger' %>
-                    <% end %>
-                    <%if f.joined %>
-                    <p class='invit-status'>Accepted</p>
-                    <% end %>
-                </p>
-                <% end %>
-            </div>
-            <div class="spacer">
-                <div class="mask"></div>
-                <span><i></i></span>
-            </div>
-            <div class="tirp-chats">
+            <div class="trip-chats">
                 <h2 class='trip-titles'>Chat Now</h2>
                 <div class="chat-content">
                     <% @trip.tripchats.each do |f| %>
-                    <p>
-                        <%= f.content %>
-                    </p>
-                    <p>
-                        << By <%=f.catcher.user_name %> >>
-                    </p>
-                    <%= link_to tripchat_path(f),method: 'delete',class: 'btn dlt fas fa-trash', data: {confirm: "Are you sure?"} do %>
-                    <% end %>
-                    <hr>
+                     <div class="<%= f.catcher == current_catcher ? 'message-orange' : 'message-blue' %>">
+                        <div class='message-content'>
+                          <span><%= f.content %></span> &nbsp -  <em> by <%= f.catcher.user_name %></em>
+                        </div>
+                      </div>
                     <% end %>
                 </div>
                 <%= simple_form_for [@trip, @tripchat] do |f|%>
                 <%= f.input :content %>
-                <%= f.submit 'Add message', class: 'btn btn-warning'  %>
+                <%= f.submit 'Add message', class: 'btn btn-warning' %>
                 <% end %>
                 <br>
             </div>
         </div>
     </div>
 </div>
+<br>
