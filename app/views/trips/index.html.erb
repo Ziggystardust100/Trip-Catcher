@@ -1,6 +1,19 @@
 <div class="container">
-  <% @trips.each do |trp| %>
-  <p> <%= link_to trp.destination.location ,trip_path(trp) %> </p>
-  <% end %>
+  <br>
+  <h2 class="landing-page-titles" style="text-align: center">Available trips (<%= Trip.count %>)</h2>
+  <br>
+  <div class="row">
+    <% @trips.each do |i| %>
+      <div class="col-12 col-md-6 col-lg-4 py 5px px 5px">
+        <%= link_to trip_path(i) do %>
+          <div class="card-category" style='background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.15)), url("<%= cl_image_path i.destination.pictures.first.photo, height: 800, width: 800, crop: :fill unless i.destination.pictures.blank? %>")'>
+            <div class="card-trip-infos">
+              <h2><%= i.destination.location %></h2>
+              <h5><%= i.status %></h5>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
-

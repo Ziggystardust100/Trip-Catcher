@@ -1,10 +1,8 @@
-
 .trip-show-main {
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius:5px;
+  border-radius: 5px;
 }
-
 .top-trip-show img {
   height: 500px;
   width: 100%;
@@ -15,12 +13,28 @@
   display: flex;
   justify-content: space-around;
   align-items: top;
+  position: relative;
 }
-
+.story-img{
+  margin-bottom: 30px;
+}
+.tripedit {
+  position: absolute;
+  top: -58px;
+  right: 31px;
+  z-index: 2;
+  border-radius: 50%;
+}
+.tripdelete {
+  position: absolute;
+  top: -58px;
+  right: -11px;
+  z-index: 2;
+  border-radius: 50%;
+}
 .trip-content {
   padding: 30px;
 }
-
 .trip-titles {
   text-align: center;
   margin-top: 20px;
@@ -29,35 +43,43 @@
   font-size: 20px;
   text-transform: uppercase;
 }
+.trip-chats {
+  padding: 0 50px;
+}
 .chat-content {
   border: 1px solid #ccc;
-  background-color: #eee;
+  background-color: #eeeeee38;
   overflow: scroll;
-  height: 300px;
+  height: 400px;
   padding: 10px;
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  padding: 20px;
 }
-
-
-
+.trip-desc {
+  white-space: pre-line;
+  margin-left: 105px;
+}
 
 .invit-status {
   background-color: aquamarine;
 }
 .status-open {
-  color: green;
-  background-color: aquamarine;
+  color: white;
+  background-color: $green;
   border-radius: 5px;
+  padding: 5px 25px;
 }
 .status-full {
-  color: green;
-  background-color: orange;
+  background-color: $orange;
+  color: white;
   border-radius: 5px;
+  padding: 5px 25px;
 }
 .status-locked {
-  color: black;
-  background-color: red;
+  color: white;
+  background-color: $redish;
   border-radius: 5px;
+  padding: 5px 25px;
 }
 
 .spacer {

@@ -8,28 +8,32 @@
 
   <% end %>
     <div class="card-trip-infos m-3">
-    <h3><%= @story.title %></h3>
+    <h3><%= @story.title %> @ <%= @story.destination.location %></h3>
     <p>Created by <strong><%= @story.catcher.user_name %></strong></p>
     <p>Rating: <% @story.rating.times do%>
       <i class="fas fa-feather-alt"></i>
     <% end %></p>
-    <div class="separator"></div>
+    <!-- <div class="separator"></div> -->
+    <div class="spacer">
+      <div class="mask"></div>
+      <span><i></i></span>
+    </div>
     <div class="story-content">
-      <p>Content:
+      <p><strong>Content:</strong>
         <br>
         <%= @story.content %></p>
     </div>
     <%= link_to "Back", stories_path, class: "btn btn-info m-3"%>
 
   <% if policy(@story).update? %>
-    <%= link_to "Edit your story", edit_story_path(@story), class: "btn btn-info mb-2 absolute"%>
+    <%= link_to edit_story_path(@story), class: "btn btn-info mb-2 edit" do %><i class="fas fa-edit"></i>
+    <% end %>
   <% end %>
-
-    <br>
     <% if policy(@story).destroy? %>
-      <%= link_to stories_path, method: 'delete', class: 'card-link text-warning delete', data: {confirm: "Are you sure?"}  do %><i class="fas fa-trash"></i>
+      <%= link_to stories_path, method: 'delete', class: 'btn btn-info mb-2 delete', data: {confirm: "Are you sure?"}  do %><i class="fas fa-trash"></i>
       <% end %>
     <% end %>
+
   </div>
 </div>
 <br>

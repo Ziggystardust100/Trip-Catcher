@@ -6,7 +6,6 @@
   <%= f.simple_fields_for :pictures do |p| %>
     <%= p.file_field :photo, :multiple => true, name: "pics[photo][]"%>
   <% end %>
-
     <%= f.input :title %>
     <%= f.input :rating, collection: (1..5).to_a %>
     <%= f.input :content %>
