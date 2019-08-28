@@ -2,8 +2,7 @@
 body {
   margin: 0;
   font-family: Verdana, sans-serif;
-  background-image: linear-gradient(to right bottom, #fef6df, #fdf7e3, #fcf7e7, #fbf8eb, #faf8ef);
-   background-repeat: no-repeat;
+background-image: linear-gradient(to top, #fffae2, #fffbe5, #fffce9, #fffdec, #fffeef);   background-repeat: no-repeat;
   height: 100%;
   background-attachment: fixed;
   margin: 0;
@@ -68,16 +67,17 @@ a {
 }
 .landing-page-titles {
   border-bottom: 0px;
-  background-color: #af593a;
+
   padding-left: 25px;
   padding-right: 25px;
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 5px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.44);
+  //box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.44);
   margin-bottom: 20px;
   margin-top: 20px;
-  color: white;
-  font-weight: bold;
-}
+  color: #7e7d78;
+  font-family: Travel Font;
+  font-size:40px;
 
+}

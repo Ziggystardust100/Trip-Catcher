@@ -4,7 +4,9 @@
           <div class='left-profile'>
               <div class="card-profile ">
                 <div class="profile-center">
-                    <% unless @catcher.pictures.empty? %>
+                    <% if @catcher.pictures.empty? %>
+                    <%= image_tag 'sheep.jpg', class: 'profile-image' %>
+                    <% else %>
                     <%= cl_image_tag @catcher.pictures.first.photo, class: 'profile-image'%>
                     <% end %>
                 </div>

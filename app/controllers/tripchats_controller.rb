@@ -6,7 +6,10 @@ class TripchatsController < ApplicationController
     @tripchat.catcher = current_catcher
     authorize @tripchat
     if @tripchat.save
-      redirect_to trip_path(@tripchat.trip)
+      ActionCable.server.broadcast "tripchat_#{@tripchat.trip.id}",
+      trip_id: @tripchat.trip.id,
+      content: @tripchat.to_json,
+      catcher_username: @tripchat.catcher.user_name
     else
       render 'trips/show'
     end
