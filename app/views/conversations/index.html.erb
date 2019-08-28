@@ -11,17 +11,13 @@
                     <% else %>
                     <% reciever = Catcher.find(conversation.sender_id) %>
                     <% end %>
-                    <%= link_to  conversation_messages_path(conversation) do%>
-                    <div class="card-product">
+                    <div class="card-product conv">
                         <%= cl_image_tag reciever.pictures.last.photo, alt: "alttext" %>
                         <div class="card-product-infos">
-                            <h2>
-                                <%=reciever.user_name %>
-                            </h2>
-                            <p>Check my messages</p>
+                            <h2><%=reciever.user_name %></h2>
+                            <%= link_to "Check messages", conversation_messages_path(conversation), class: "btn btn-info m-2 mes"%>
                         </div>
                     </div>
-                    <% end %>
                     <% end %>
                     <% end %>
                 </div>
@@ -30,25 +26,21 @@
         <div class="col-sm-6">
             <div class="conv-group">
                 <div class="friend">
-                    <h3>My friends</h3>
+                  <% count = 0 %>
                     <% @catchers.each do |catcher| %>
-                    <% if catcher.id != current_catcher.id %>
-                    <div>
-                        <%= link_to conversations_path(sender_id: current_catcher.id, reciever_id: catcher.id), method: 'post' do%>
-                        <div class="card-product">
-                            <%= cl_image_tag catcher.pictures.first.photo, alt: "alttext" %>
-                            <div class="card-product-infos">
-                                <h2>
-                                    <%= catcher.user_name %>
-                                </h2>
-                                <p>
-                                    Message me!
-                                </p>
-                            </div>
-                        </div>
-                        <% end %>
-                    </div>
+                    <% if catcher.id != current_catcher.id && Conversation.between(catcher, current_catcher).blank?%>
+                    <% count += 1 %>
+                    <% if  count == 1 %><h3>My friends</h3> <% end %>
+
+                    <!-- we add && in the if to remove the friend when we already talk to him -->
+                      <div class="card-product conv">
+                          <%= cl_image_tag catcher.pictures.first.photo, alt: "alttext" %>
+                          <div class="card-product-infos">
+                              <h2><%= catcher.user_name %></h2>
+                             <%= link_to "Message me", conversations_path(sender_id: current_catcher.id, reciever_id: catcher.id), method: 'post', class: "btn btn-info m-2 mes"%>
+                          </div>
                     <% end %>
+                    </div>
                     <% end %>
                 </div>
             </div>
