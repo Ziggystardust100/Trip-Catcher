@@ -1,32 +1,33 @@
-<div class="wrapper-chat">
-   <% unless @reciever.pictures.empty? %>
-
-    <%= cl_image_tag @reciever.pictures.first.photo, class: "avatar", id:"wrapper-img" %>
+<br>
+<div class="container">
+  <div class="wrapper-chat">
+    <% unless @reciever.pictures.empty? %>
+      <%= cl_image_tag @reciever.pictures.first.photo, class: "avatar", id:"wrapper-img" %>
     <% end %>
     <%= @reciever.user_name %>
-
-
-</div>
-
-<div class="container message-container" id='messages' data-id='<%= @conversation.id  %>' data-catcher-id='<%= current_catcher.id %>'>
-  <% if @over_ten %>
-  <div class="text-center">
-      <%= link_to 'Show Previous', '?m=all', class: 'btn btn-warning btn-rounded btn-sm mb-3' %>
   </div>
-
-  <% end %>
-  <% @messages.each do |message| %>
-    <% if message.content %>
-        <%= render 'messages/message', message: message, is_current_catcher: message.catcher == current_catcher %>
-      <% end %>
+  <br>
+  <div class="container message-container" id='messages' data-id='<%= @conversation.id  %>' data-catcher-id='<%= current_catcher.id %>'>
+    <% if @over_ten %>
+    <div class="text-center">
+        <%= link_to 'Show Previous', '?m=all', class: 'btn btn-warning btn-rounded btn-sm mb-3' %>
+    </div>
+    <% end %>
+    <% @messages.each do |message| %>
+      <% if message.content %>
+          <%= render 'messages/message', message: message, is_current_catcher: message.catcher == current_catcher %>
+        <% end %>
+    <% end %>
+  </div>
+  <%= form_for [@conversation, @message], remote: true do |f| %>
+  <br>
+   <div class="boxmes">
+     <%= f.text_area :content%>
+   </div>
+   <%= f.text_field :catcher_id, value: current_catcher.id, type: :hidden %>
+   <div>
+     <%= f.submit 'Reply', class: 'btn btn-info', style: 'border-radius: 5px'%>
+   </div>
   <% end %>
 </div>
-<%= form_for [@conversation, @message], remote: true do |f| %>
- <div>
-   <%= f.text_area :content%>
- </div>
- <%= f.text_field :catcher_id, value: current_catcher.id, type: :hidden %>
- <div>
-   <%= f.submit 'Add Reply'%>
- </div>
-<% end %>
+<br>

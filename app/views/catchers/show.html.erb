@@ -1,7 +1,8 @@
-<div class="container-fluid">
+<div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-12 col-md-3">
-            <div class="card-profile">
+        <div class="col-12 col-md-3 ">
+          <div class='left-profile'>
+              <div class="card-profile ">
                 <div class="profile-center">
                     <% unless @catcher.pictures.empty? %>
                     <%= cl_image_tag @catcher.pictures.first.photo, class: 'profile-image'%>
@@ -14,8 +15,10 @@
                         </h3>
                         <hr>
                         <% if current_catcher == @catcher %>
-                        <%= link_to 'Edit', edit_catcher_path(@catcher), class: "btn btn-warning", id: 'edit-catcher' %>
+                        <%= link_to edit_catcher_path(@catcher), class: "btn btn-warning", id: 'edit-catcher' do %><i class="fas fa-edit"></i>
                         <% end %>
+                <% end %>
+
                         <table>
                             <tr>
                                 <td><span class='txt-show'><i class="fas fa-venus-mars"></i> </span></td>
@@ -40,6 +43,8 @@
                 </div>
             </div>
             <%= link_to "Back", catchers_path, class: "btn btn-warning my-3 btn-block" %>
+          </div>
+
         </div>
         <div class="col-12 col-md-9">
             <div class="container">
