@@ -22,7 +22,7 @@
   <%= form_for [@conversation, @message], remote: true do |f| %>
   <br>
    <div class="boxmes">
-     <%= f.text_area :content%>
+     <%= f.text_area :content, onkeydown: 'if(event.keyCode === 13) {this.form.submit()}'%>
    </div>
    <%= f.text_field :catcher_id, value: current_catcher.id, type: :hidden %>
    <div>
@@ -30,13 +30,3 @@
    </div>
   <% end %>
 </div>
-<br>
-<%= form_for [@conversation, @message], remote: true do |f| %>
- <div>
-   <%= f.text_area :content, onkeydown: 'if(event.keyCode === 13) {this.form.submit()}'%>
- </div>
- <%= f.text_field :catcher_id, value: current_catcher.id, type: :hidden %>
- <div>
-   <%= f.submit 'Add Reply'%>
- </div>
-<% end %>
