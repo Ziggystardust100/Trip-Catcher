@@ -3,6 +3,7 @@ class InvitationsController < ApplicationController
   def create
     @invitation = Invitation.new(invitation_params)
     @trip = Trip.find(params[:trip_id])
+    @tripchat = Tripchat.new
     @invitation.trip = @trip
     authorize @invitation
     if @trip.status == 'Open'
