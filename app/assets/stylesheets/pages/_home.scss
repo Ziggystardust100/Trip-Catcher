@@ -2,7 +2,8 @@
 body {
   margin: 0;
   font-family: Verdana, sans-serif;
-background-image: linear-gradient(to top, #fffae2, #fffbe5, #fffce9, #fffdec, #fffeef);   background-repeat: no-repeat;
+  background-image: linear-gradient(to top, #fffae2, #fffbe5, #fffce9, #fffdec, #fffeef);
+  background-repeat: no-repeat;
   height: 100%;
   background-attachment: fixed;
   margin: 0;
@@ -67,7 +68,6 @@ a {
 }
 .landing-page-titles {
   border-bottom: 0px;
-
   padding-left: 25px;
   padding-right: 25px;
   padding-top: 5px;
@@ -79,5 +79,4 @@ a {
   color: #7e7d78;
   font-family: Travel Font;
   font-size:40px;
-
 }
