@@ -49,6 +49,9 @@
           <p><%= @destination.description %>.</p>
           <h3>Recommendation :</h3>
           <p><%= @destination.recommendation %></p>
+          <% if @destination.location == 'Casablanca'%>
+          <p><a href="http://www.surfpal.co/rides?utf8=%E2%9C%93&location=Casablanca&date%5Bdate%5D=2019-08-31&time=Noon&experience=Beginner&commit=Search" target="_blank" style='color: blue; '>Find Beautiful beaches on surfpal.co</a></p>
+          <%end%>
           <%= link_to "Back", destinations_path, class: "btn btn-info m-3"%>
           <%= link_to "Create trip", new_destination_trip_path(@destination), class: "btn btn-success m-3" %>
 
