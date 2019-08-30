@@ -30,7 +30,7 @@
     <% end %>
   <% end %>
     <% if policy(@story).destroy? %>
-      <%= link_to stories_path, method: 'delete', class: 'btn btn-info mb-2 delete', data: {confirm: "Are you sure?"}  do %><i class="fas fa-trash"></i>
+      <%= link_to story_path(@story), method: 'delete', class: 'btn btn-info mb-2 delete', data: {confirm: "Are you sure?"}  do %><i class="fas fa-trash"></i>
       <% end %>
     <% end %>
 

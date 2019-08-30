@@ -53,7 +53,7 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     authorize @story
     @story.destroy
-    redirect_to root_path
+    redirect_to stories_path
   end
 
   private
