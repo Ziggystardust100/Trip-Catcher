@@ -11,7 +11,10 @@ if (msg) {
           "beforeend",
           htmlChat(content, catcher_username)
         );
-        if (msg.dataset.catcherId === JSON.parse(content).catcher_id) {
+        if (
+          parseInt(msg.dataset.catcherId) ===
+          parseInt(JSON.parse(content).catcher_id)
+        ) {
           chat.value = "";
         }
         msg.scrollTop = msg.scrollHeight;

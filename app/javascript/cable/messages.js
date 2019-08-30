@@ -12,7 +12,10 @@ if (messages) {
           "beforeend",
           htmlToInsert(message, catcher_username, message_time)
         );
-        if (messages.dataset.catcherId === JSON.parse(message).catcher_id) {
+        if (
+          parseInt(messages.dataset.catcherId) ===
+          parseInt(JSON.parse(message).catcher_id)
+        ) {
           input.value = "";
         }
         messages.scrollTop = messages.scrollHeight;
