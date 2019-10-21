@@ -19,7 +19,6 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary', '~> 1.9.1' ###
 gem 'carrierwave', '~> 1.2'
-gem 'geocoder' ###
 gem 'geocoder'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
